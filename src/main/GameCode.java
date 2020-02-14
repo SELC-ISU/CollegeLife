@@ -15,6 +15,7 @@ public class GameCode extends GameAPI {
   private float volume;
   static CoolCheck stuff;
   public static int waitUntil;
+ 
   public  void initialize(){
 	if (firstRun) {
       stuff = new CoolCheck();
@@ -67,6 +68,7 @@ public class GameCode extends GameAPI {
   public void gameLoop() {
     textInterface.frameEvent();
     if (textInterface.selected.equals("TEST OPTION 1")) {
+    	textInterface.refreshPage();
     	textInterface.println("THANK YOU FOR PICKING OPTION 1");
     	textInterface.println(" ");
     	textInterface.println(" ");
@@ -81,7 +83,7 @@ public class GameCode extends GameAPI {
     	textInterface.println("BRUH");
     	textInterface.selected = "unimportant";
     }
-    if (!stuff.isPlaying()) {
+    /*if (!stuff.isPlaying()) {
     	try {
         clip.stop();
         if (waitUntil == 696) {
@@ -114,6 +116,6 @@ public class GameCode extends GameAPI {
       } catch (NullPointerException e) {
     	  
       }
-    }
+    }*/
   }
 }
