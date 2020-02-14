@@ -20,6 +20,13 @@ public class TextInterface extends GameAPI
   public boolean renderThisBadBoy;
   public Sprite image;
   private int imagePosition;
+  /**
+   * pretty generic constructer
+   * @param width the width you want for the interface (usally just use the width of the screen)
+   * @param height the height you want for the interface (usally just use the height of the screen)
+   * @param selector the sprite you want for option selector
+   * @author Jeffrey Marsh
+   */
   public TextInterface(int width, int height, Sprite selector)
   {
     this.width = width;
@@ -40,8 +47,11 @@ public class TextInterface extends GameAPI
     amountBackshifted = 0;
     renderThisBadBoy = false;
   }
-  
-  public void frameEvent() { if (selectorPos != -1) {
+  /*
+   *run once a frame to help with the selection proccess
+   */
+  public void frameEvent() { 
+	  if (selectorPos != -1) {
       if (keyPressed(87)) {
         selectorPos -= 1;
       }
@@ -59,19 +69,23 @@ public class TextInterface extends GameAPI
         selectorPos = -1;
       }
     }
+	  
   if (renderThisBadBoy) {
 	    renderImage (image, false);
 	    }
     render();
   }
-  
+  /**
+   * run whenever a option is selected
+   * @param selected the option to select
+   */
   public void queryEvent(String selected) {
     this.selected = selected;
    /* GameCode.clip2.stop();
     GameCode.stuff.playSoundEffect(6.0F, "soundEffects/Click.wav");*/
   }
-  
-  public void append(String str) { int tmp8_5 = line; String[] tmp8_1 = text;tmp8_1[tmp8_5] = (tmp8_1[tmp8_5] + str);
+  public void append(String str) { 
+	  int tmp8_5 = line; String[] tmp8_1 = text;tmp8_1[tmp8_5] = (tmp8_1[tmp8_5] + str);
     if (text[line].length() > width) {
       text[line] = text[line].substring(0, width);
     }
@@ -79,7 +93,10 @@ public class TextInterface extends GameAPI
     if (charPos >= width)
       charPos = (width - 1);
   }
-  
+  /**
+   * prints some text to the screen
+   * @param str the text to print 
+   */
   public void print(String str) {
     int workingChar = 0;
     int textLength = str.length();
@@ -106,20 +123,29 @@ public class TextInterface extends GameAPI
         workingChar = textLength;
       }
   }
-  
+  /**
+   * prints the text to the screen then starts a new line
+   * @param str the text to print
+   */
   public void println(String str) {
     print(str);
     println();
   }
-  
-  public void println() { if (line >= height - 1) {
+  /**
+   * scrolls down one line
+   */
+  public void println() { 
+	  if (line >= height - 1) {
       backshift(1);
     } else {
       line += 1;
     }
     charPos = 0;
   }
-  
+  /**
+   * give the player a list of options
+   * @param options the choices for the player
+   */
   public void query(String[] options) { if (line != 40) {
       selectorPos = line;
       bottomChoice = line;
@@ -144,7 +170,18 @@ public class TextInterface extends GameAPI
       amountBackshifted = 0;
     }
   }
-  
+  /**
+   * opens a new page
+   */
+  public void refreshPage () {
+	  for ( int i = 0; i < 36; i = i + 1) {
+	  this.println();
+	  }
+	
+  }
+  /**
+   * draws the text (most likely the thing we are gonna have to change for the java letters)
+   */
   public void render() {
     for (int i = 0; i < text.length; i++) {
       for (int j = 0; j < text[i].length(); j++) {
@@ -155,7 +192,13 @@ public class TextInterface extends GameAPI
     if (selectorPos != -1)
       selector.draw(0, selectorPos * 12 + 1);
   }
-  
+  /**
+   * draws text wherever you want it  (most likely gonna have to be changed for the java letters)
+   * @param x the x positoin of the text
+   * @param y the y position of the text
+   * @param message the text
+   * @param color the color of the text (probably gonna need to be changed)
+   */
   public void renderAtAPlace(int x, int y, String[] message, Sprite color) {
     for (int i = 0; i < message.length; i++)
       for (int j = 0; j < message[i].length(); j++) {
@@ -175,6 +218,11 @@ public class TextInterface extends GameAPI
       text[(height - i - 1)] = "";
     }
   }
+  /**
+   * 
+   * @param image
+   * @param firstRun
+   */
   public void renderImage (Sprite image, boolean firstRun) {
 	 this.image = image;
 	 renderThisBadBoy = true;
