@@ -9,8 +9,8 @@ public class GameCode extends GameAPI {
   private GameWindow gameWindow;
   private TextInterface textInterface;
   DataLine.Info info;
-  public static  Clip clip;
-  public static Clip clip2;
+ // public static  Clip clip;
+  //public static Clip clip2;
   private boolean firstRun = true;
   private float volume;
   static CoolCheck stuff;
@@ -23,9 +23,9 @@ public class GameCode extends GameAPI {
    //   stuff.playSoundEffect(6.0F, "soundEffects/Click.wav");
   }
     
-    if (stuff.isPlaying()) {
+   /* if (stuff.isPlaying()) {
      clip.stop();
-    }
+     }*/
  //   stuff.play("tital", volume);
     textInterface = new TextInterface(80, 41, sprites.selector);
     textInterface.println(" ");
@@ -34,8 +34,8 @@ public class GameCode extends GameAPI {
     textInterface.println(" ");
     textInterface.println(" ");
     textInterface.println(" ");
-    textInterface.println("            BRUH");
-    textInterface.println("");
+    textInterface.println(" ");
+    textInterface.println(" ");
     textInterface.println(" ");
     textInterface.println(" ");
     textInterface.println(" ");
@@ -44,7 +44,6 @@ public class GameCode extends GameAPI {
     textInterface.println(" ");
     textInterface.query(new String[] { "TEST OPTION 1", "TEST OPTION 2", "TEST OPTION 3", "TEST OPTION 4" });
     textInterface.println(" ");
-    textInterface.println("");
     textInterface.println(" ");
     textInterface.println(" ");
     textInterface.println(" ");
@@ -61,9 +60,11 @@ public class GameCode extends GameAPI {
     textInterface.println(" ");
     textInterface.println(" ");
     textInterface.println(" ");
-    textInterface.println("VERSION 3.0 ");
+    textInterface.println(" ");
+    textInterface.println(" ");
     
 }
+  
   public void gameLoop() {
     textInterface.frameEvent();
     if (textInterface.selected.equals("TEST OPTION 1")) {
@@ -77,13 +78,15 @@ public class GameCode extends GameAPI {
     	textInterface.selected = "unimportant";
     	 textInterface.query(new String[] { "COOL MOVE ON", "TEST OPTION 2", "TEST OPTION 3", "TEST OPTION 4" });
     }
+    
     if (textInterface.selected.equals("COOL MOVE ON")) {
     	textInterface.println("BRUH");
     	textInterface.selected = "unimportant";
     }
+    
     if (!stuff.isPlaying()) {
     	try {
-        clip.stop();
+        //clip.stop();
         if (waitUntil == 696) {
           stuff.play("tital", volume);
         }
