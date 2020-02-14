@@ -42,8 +42,8 @@ public class GameCode extends GameAPI {
     textInterface.println(" ");
     textInterface.println(" ");
     textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.query(new String[] { "TEST OPTION 1", "TEST OPTION 2", "TEST OPTION 3", "TEST OPTION 4" });
+    textInterface.println("CHOOSE YOUR GENDER:");
+    textInterface.query(new String[] { "MALE", "FEMALE", "RANDOM" });
     textInterface.println(" ");
     textInterface.println(" ");
     textInterface.println(" ");
@@ -68,20 +68,20 @@ public class GameCode extends GameAPI {
   
   public void gameLoop() {
     textInterface.frameEvent();
-    if (textInterface.selected.equals("TEST OPTION 1")) {
-    	textInterface.println("THANK YOU FOR PICKING OPTION 1");
-    	textInterface.println(" ");
-    	textInterface.println(" ");
+    if (textInterface.selected.equals("MALE")) {
+    	textInterface.println("YOU ARE MARK, A 19 YEAR OLD MALE IN ISU.");
+    	textInterface.println("YOU ARE ABOUT TO EMBARK ON YOUR COLLEGE LIFE!");
+    	textInterface.println("PROCEED?");
     	textInterface.println(" ");
     	textInterface.println(" ");
     	textInterface.println(" ");
     	textInterface.println(" ");
     	textInterface.selected = "unimportant";
-    	 textInterface.query(new String[] { "COOL MOVE ON", "TEST OPTION 2", "TEST OPTION 3", "TEST OPTION 4" });
+    	 textInterface.query(new String[] { "YES", "NO", "BACK" });
     }
     
-    if (textInterface.selected.equals("COOL MOVE ON")) {
-    	textInterface.println("BRUH");
+    if (textInterface.selected.equals("YES")) {
+    	textInterface.println("WELCOME TO ISU!!!");
     	textInterface.selected = "unimportant";
     }
     
