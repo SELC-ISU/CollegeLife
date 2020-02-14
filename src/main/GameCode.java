@@ -15,6 +15,7 @@ public class GameCode extends GameAPI {
   private float volume;
   static CoolCheck stuff;
   public static int waitUntil;
+ 
   public  void initialize(){
 	if (firstRun) {
       stuff = new CoolCheck();
@@ -72,21 +73,18 @@ public class GameCode extends GameAPI {
     	textInterface.println("YOU ARE MARK, A 19 YEAR OLD MALE IN ISU.");
     	textInterface.println("YOU ARE ABOUT TO EMBARK ON YOUR COLLEGE LIFE!");
     	textInterface.println("PROCEED?");
-    	textInterface.println(" ");
-    	textInterface.println(" ");
-    	textInterface.println(" ");
-    	textInterface.println(" ");
-    	textInterface.selected = "unimportant";
-    	 textInterface.query(new String[] { "YES", "NO", "BACK" });
-    }
-    
+
     if (textInterface.selected.equals("YES")) {
     	textInterface.println("WELCOME TO ISU!!!");
     	textInterface.selected = "unimportant";
     }
+
+    /*if (!stuff.isPlaying()) {
+=======
     
     /*
     if (!stuff.isPlaying()) {
+>>>>>>> 20b180350a2b60630c181f36de4be5b188e5f1a2
     	try {
         //clip.stop();
         if (waitUntil == 696) {
@@ -119,7 +117,8 @@ public class GameCode extends GameAPI {
       } catch (NullPointerException e) {
     	  
       }
-    }
-    */
+<<<<<<< HEAD
+    }*/
+
   }
-}
+}}
