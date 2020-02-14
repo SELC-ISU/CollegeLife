@@ -110,17 +110,8 @@ public class GameWindow
     return false;
   }
   
-  public int[] KeysPressed() {
-    int[] pressedKeys = new int[76];
-    
-    int pressedKeysPlace = 0;
-    for (int x = 0; x != 255; x++) {
-      if (keysPressed[x] != false) {
-        pressedKeys[pressedKeysPlace] = x;
-        pressedKeysPlace++;
-      }
-    }
-    return pressedKeys;
+  public boolean[] KeysPressed() {
+    return keysPressed;
   }
   
   public Graphics getBuffer() { return bufferGraphics; }

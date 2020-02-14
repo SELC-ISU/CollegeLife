@@ -73,6 +73,7 @@ public class GameCode extends GameAPI {
     	textInterface.println("YOU ARE MARK, A 19 YEAR OLD MALE IN ISU.");
     	textInterface.println("YOU ARE ABOUT TO EMBARK ON YOUR COLLEGE LIFE!");
     	textInterface.println("PROCEED?");
+    	textInterface.selected = "unimportant";
 
     if (textInterface.selected.equals("YES")) {
     	textInterface.println("WELCOME TO ISU!!!");
