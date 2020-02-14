@@ -25,7 +25,8 @@ public class GameCode extends GameAPI {
     
    /* if (stuff.isPlaying()) {
      clip.stop();
-     }*/
+     }
+     */
  //   stuff.play("tital", volume);
     textInterface = new TextInterface(80, 41, sprites.selector);
     textInterface.println(" ");
@@ -84,6 +85,7 @@ public class GameCode extends GameAPI {
     	textInterface.selected = "unimportant";
     }
     
+    /*
     if (!stuff.isPlaying()) {
     	try {
         //clip.stop();
@@ -118,5 +120,6 @@ public class GameCode extends GameAPI {
     	  
       }
     }
+    */
   }
 }
