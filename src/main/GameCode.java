@@ -1,6 +1,6 @@
 package main;
 
-
+import java.util.Random;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 import resources.CoolCheck;
@@ -15,6 +15,9 @@ public class GameCode extends GameAPI {
   private float volume;
   static CoolCheck stuff;
   public static int waitUntil;
+  private int gender;
+  
+  Random r = new Random();
  
   public  void initialize(){
 	if (firstRun) {
@@ -30,21 +33,10 @@ public class GameCode extends GameAPI {
      */
  //   stuff.play("tital", volume);
     textInterface = new TextInterface(80, 41, sprites.selector);
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
+    textInterface.refreshPage();
     textInterface.println("CHOOSE YOUR GENDER:");
     textInterface.query(new String[] { "MALE", "FEMALE", "RANDOM" });
+    /*textInterface.println(" ");
     textInterface.println(" ");
     textInterface.println(" ");
     textInterface.println(" ");
@@ -63,22 +55,53 @@ public class GameCode extends GameAPI {
     textInterface.println(" ");
     textInterface.println(" ");
     textInterface.println(" ");
-    textInterface.println(" ");
+    */
     
 }
   
   public void gameLoop() {
+	  
     textInterface.frameEvent();
     if (textInterface.selected.equals("MALE")) {
+    	textInterface.refreshPage();
     	textInterface.println("YOU ARE MARK, A 19 YEAR OLD MALE IN ISU.");
     	textInterface.println("YOU ARE ABOUT TO EMBARK ON YOUR COLLEGE LIFE!");
-    	textInterface.println("PROCEED?");
     	textInterface.selected = "unimportant";
+    	textInterface.println("PROCEED?");
+    	textInterface.query(new String[] { "YES", "NO"});
+    }
+    if (textInterface.selected.equals("FEMALE")) {
+    	textInterface.refreshPage();
+    	textInterface.println("YOU ARE JILL, A 19 YEAR OLD MALE IN ISU.");
+    	textInterface.println("YOU ARE ABOUT TO EMBARK ON YOUR COLLEGE LIFE!");
+    	textInterface.selected = "unimportant";
+    	textInterface.println("PROCEED?");
+    	textInterface.query(new String[] { "YES", "NO"});
+    }
 
     if (textInterface.selected.equals("YES")) {
+    	textInterface.refreshPage();
     	textInterface.println("WELCOME TO ISU!!!");
     	textInterface.selected = "unimportant";
+    	//title = false;
     }
+    if(textInterface.selected.equals("NO")) {
+    	textInterface.refreshPage();
+    	textInterface.println("CHOOSE YOUR GENDER:");
+    	textInterface.selected = "unimportant";
+        textInterface.query(new String[] { "MALE", "FEMALE", "RANDOM" });
+    }
+    if(textInterface.selected.equals("RANDOM")) {
+    	textInterface.refreshPage();
+    	gender = (int) ((Math.random() * ((2 - 1) + 1)) + 1);
+    	if(gender == 1) {
+    		textInterface.selected = "MALE";
+    	}
+    	if(gender == 2) {
+    		textInterface.selected = "FEMALE";
+    	}
+    }
+    
 
     /*if (!stuff.isPlaying()) {
 =======
@@ -122,4 +145,4 @@ public class GameCode extends GameAPI {
     }*/
 
   }
-}}
+}

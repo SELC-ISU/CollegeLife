@@ -174,7 +174,7 @@ public class TextInterface extends GameAPI
    * opens a new page
    */
   public void refreshPage () {
-	  for ( int i = 0; i < 36; i = i + 1) {
+	  for ( int i = 0; i < 39; i = i + 1) {
 	  this.println();
 	  }
 	
