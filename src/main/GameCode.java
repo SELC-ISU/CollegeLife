@@ -15,7 +15,8 @@ public class GameCode extends GameAPI {
   private float volume;
   static CoolCheck stuff;
   public static int waitUntil;
-  private int gender;
+  private int gender;     //for the random
+  public String name;
   
   Random r = new Random();
  
@@ -69,6 +70,7 @@ public class GameCode extends GameAPI {
     	textInterface.selected = "unimportant";
     	textInterface.println("PROCEED?");
     	textInterface.query(new String[] { "YES", "NO"});
+    	name = "MARK";
     }
     if (textInterface.selected.equals("FEMALE")) {
     	textInterface.refreshPage();
@@ -77,6 +79,7 @@ public class GameCode extends GameAPI {
     	textInterface.selected = "unimportant";
     	textInterface.println("PROCEED?");
     	textInterface.query(new String[] { "YES", "NO"});
+    	name = "JILL";
     }
 
     if (textInterface.selected.equals("YES")) {
