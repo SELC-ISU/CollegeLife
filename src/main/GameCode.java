@@ -7,13 +7,16 @@ import resources.CoolCheck;
 
 public class GameCode extends GameAPI {
   private GameWindow gameWindow;
-  private TextInterface textInterface;
+  private static TextInterface textInterface;
   DataLine.Info info;
+  Event [] randomEvents = new Event [1];
  // public static  Clip clip;
   //public static Clip clip2;
   private boolean firstRun = true;
   private float volume;
   static CoolCheck stuff;
+  int stationaryIndex = 420;
+  boolean eventFinished = false;
   public static int waitUntil;
   private int gender;     //for the random
   public String name;
@@ -25,6 +28,9 @@ public class GameCode extends GameAPI {
       stuff = new CoolCheck();
       volume = -10.0F;
       firstRun = false;
+      EpicTestEvent event = new EpicTestEvent();
+      randomEvents[0] = event;
+      
    //   stuff.playSoundEffect(6.0F, "soundEffects/Click.wav");
   }
     
@@ -147,5 +153,25 @@ public class GameCode extends GameAPI {
 <<<<<<< HEAD
     }*/
 
+  }
+  /**
+   * returns the text interface
+   * @return the text Interface
+   */
+  public static TextInterface getTextInterface () {
+      return textInterface;
+  }
+  public void runRandomEvent () {
+      if (stationaryIndex == 420) {
+          stationaryIndex = r.nextInt(randomEvents.length);
+          randomEvents[stationaryIndex].runEventCode();
+      } else {
+          if (randomEvents[stationaryIndex].isRunning()) {
+          randomEvents[stationaryIndex].runEventCode();
+          } else {
+            stationaryIndex = 420;
+            eventFinished = true;
+          }
+      }
   }
 }
