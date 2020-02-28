@@ -1,15 +1,19 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Random;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
+
+import events.EpicTestEvent;
+import events.Event;
 import resources.CoolCheck;
 
 public class GameCode extends GameAPI {
   private GameWindow gameWindow;
   private static TextInterface textInterface;
   DataLine.Info info;
-  Event [] randomEvents = new Event [1];
+  public static ArrayList <Event> randomEvents = new ArrayList <Event>();
  // public static  Clip clip;
   //public static Clip clip2;
   private boolean firstRun = true;
@@ -20,7 +24,7 @@ public class GameCode extends GameAPI {
   public static int waitUntil;
   private int gender;     //for the random
   public String name;
-  
+  public EpicTestEvent bruh = new EpicTestEvent ();
   Random r = new Random();
  
   public  void initialize(){
@@ -28,8 +32,6 @@ public class GameCode extends GameAPI {
       stuff = new CoolCheck();
       volume = -10.0F;
       firstRun = false;
-      EpicTestEvent event = new EpicTestEvent();
-      randomEvents[0] = event;
       
    //   stuff.playSoundEffect(6.0F, "soundEffects/Click.wav");
   }
@@ -67,7 +69,7 @@ public class GameCode extends GameAPI {
 }
   
   public void gameLoop() {
-	  
+	 System.out.println(randomEvents);
     textInterface.frameEvent();
     if (textInterface.selected.equals("MALE")) {
     	textInterface.refreshPage();
@@ -163,11 +165,11 @@ public class GameCode extends GameAPI {
   }
   public void runRandomEvent () {
       if (stationaryIndex == 420) {
-          stationaryIndex = r.nextInt(randomEvents.length);
-          randomEvents[stationaryIndex].runEventCode();
+          stationaryIndex = r.nextInt(randomEvents.size());
+          randomEvents.get(stationaryIndex).runEventCode();
       } else {
-          if (randomEvents[stationaryIndex].isRunning()) {
-          randomEvents[stationaryIndex].runEventCode();
+          if (randomEvents.get(stationaryIndex).isRunning()) {
+          randomEvents.get(stationaryIndex).runEventCode();
           } else {
             stationaryIndex = 420;
             eventFinished = true;

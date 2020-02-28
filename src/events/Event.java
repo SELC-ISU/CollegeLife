@@ -1,5 +1,6 @@
-package Events;
+package events;
 
+import main.GameCode;
 import main.TextInterface;
 import resources.Sprite;
 
@@ -7,10 +8,11 @@ public class Event {
 	boolean isRunning;
 	boolean stopped;
 	/**
-	 * pretty generic constucter
+	 * pretty generic constructor
 	 * @author Jeffrey
 	 */
 	public Event () {
+		GameCode.randomEvents.add(this);
 		isRunning = false;
 		stopped = false;
 	}
@@ -36,5 +38,12 @@ public class Event {
 	 */
 	public boolean isRunning () {
 		return isRunning;
+	}
+	protected void print(String s){
+		GameCode.getTextInterface().println(s);
+		
+	}
+	protected boolean query(String s){
+		return GameCode.getTextInterface().selected.equals(s);
 	}
 }
