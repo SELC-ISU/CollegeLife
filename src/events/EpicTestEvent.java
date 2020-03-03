@@ -1,6 +1,5 @@
 package events;
 
-import main.GameCode;
 
 public class EpicTestEvent extends Event {
 	/** 
@@ -13,21 +12,21 @@ public class EpicTestEvent extends Event {
 	 
 	public void runEventCode () {
 	super.runEventCode();
-	if (GameCode.getTextInterface().selected.equals("unimportant")) {
+	if (this.checkSelected("unimportant")) {
 	this.print("BRUH");
-	GameCode.getTextInterface().query(new String [] {"BRUH1", "BRUH","BRUH2"});
-	GameCode.getTextInterface().selected = "lame";
+	this.query(new String [] {"BRUH1", "BRUH","BRUH2"});
+	this.setSelected("lame");
 		}
-	if (GameCode.getTextInterface().selected.equals("BRUH1")) {
-		GameCode.getTextInterface().println("BRUH");
+	if (this.checkSelected("BRUH1")) {
+		this.print("BRUH");
 		this.stopEvent();
 		}
-	if (GameCode.getTextInterface().selected.equals("BRUH")) {
-		GameCode.getTextInterface().println("BRUH");
+	if (this.checkSelected("BRUH")) {
+		this.print("BRUH");
 		this.stopEvent();
 		}
-	if (GameCode.getTextInterface().selected.equals("BRUH2")) {
-		GameCode.getTextInterface().println("BRUH");
+	if (this.checkSelected("BRUH2")) {
+		this.print("BRUH");
 		this.stopEvent();
 		}
 	}

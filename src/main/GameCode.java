@@ -1,5 +1,7 @@
 package main;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.sound.sampled.Clip;
@@ -7,18 +9,19 @@ import javax.sound.sampled.DataLine;
 
 import events.EpicTestEvent;
 import events.Event;
-import resources.CoolCheck;
+import resources.SoundPlayer;
+
 
 public class GameCode extends GameAPI {
   private GameWindow gameWindow;
   private static TextInterface textInterface;
   DataLine.Info info;
   public static ArrayList <Event> randomEvents = new ArrayList <Event>();
- // public static  Clip clip;
-  //public static Clip clip2;
+  public static Clip clip;
   private boolean firstRun = true;
   private float volume;
-  static CoolCheck stuff;
+  static SoundPlayer player;
+  private Graphics graphics;
   int stationaryIndex = 420;
   boolean eventFinished = false;
   public static int waitUntil;
@@ -26,12 +29,15 @@ public class GameCode extends GameAPI {
   public String name;
   public EpicTestEvent bruh = new EpicTestEvent ();
   Random r = new Random();
- 
+  private int health;
+  private int cash;
+  private int stress;
   public  void initialize(){
 	if (firstRun) {
-      stuff = new CoolCheck();
+      player = new SoundPlayer();
       volume = -10.0F;
       firstRun = false;
+      graphics = MainLoop.getWindow().getBuffer();
       
    //   stuff.playSoundEffect(6.0F, "soundEffects/Click.wav");
   }
@@ -41,6 +47,9 @@ public class GameCode extends GameAPI {
      }
      */
  //   stuff.play("tital", volume);
+	health = 100;
+	cash = 100;
+	stress = 0;
     textInterface = new TextInterface(80, 41, sprites.selector);
     textInterface.refreshPage();
     textInterface.println("CHOOSE YOUR GENDER:");
@@ -69,8 +78,22 @@ public class GameCode extends GameAPI {
 }
   
   public void gameLoop() {
-	 System.out.println(randomEvents);
     textInterface.frameEvent();
+    graphics.setColor(new Color (0xFF3A3A));
+    graphics.drawRect(520, 16, 100, 8);
+    graphics.fillRect(520, 16, health, 8);
+    graphics.setColor(new Color (0x32D35B));
+    graphics.drawRect(520, 32, 100, 8);
+    graphics.fillRect(520, 32, cash, 8);
+    graphics.setColor(new Color (0xF6DA16));
+    graphics.drawRect(520, 48, 100, 8);
+    graphics.fillRect(520, 48, stress, 8);
+    graphics.drawString("health", 475, 25);
+    graphics.drawString("cash", 475,  40);
+    graphics.drawString("Stress", 475, 55);
+    if (name != null) {
+    	graphics.drawString(name, 545, 15);
+    }
     if (textInterface.selected.equals("MALE")) {
     	textInterface.refreshPage();
     	textInterface.println("YOU ARE MARK, A 19 YEAR OLD MALE IN ISU.");
@@ -114,46 +137,7 @@ public class GameCode extends GameAPI {
     }
     
 
-    /*if (!stuff.isPlaying()) {
-=======
-    
-    /*
-    if (!stuff.isPlaying()) {
->>>>>>> 20b180350a2b60630c181f36de4be5b188e5f1a2
-    	try {
-        //clip.stop();
-        if (waitUntil == 696) {
-          stuff.play("tital", volume);
-        }
-        if (waitUntil == 1624) {
-          stuff.play("god", volume);
-        }
-        if (waitUntil == 1317) {
-          stuff.play("extrasensory", volume);
-        }
-        if (waitUntil == 1800) {
-          stuff.play("marsh", 6.0F);
-        }
-        if (waitUntil == 1654) {
-          stuff.play("roads", volume);
-        }
-        if (waitUntil == 1620) {
-      	stuff.play("mobius", volume);
-        }
-        if (waitUntil == 1513) {
-      	stuff.play("road rage", volume);
-        }
-        if (waitUntil == 1125) {
-      	stuff.play("bandits", volume);
-        }
-        if (waitUntil == 1266) {
-      	  stuff.play("jumping", volume);
-        }
-      } catch (NullPointerException e) {
-    	  
-      }
-<<<<<<< HEAD
-    }*/
+   
 
   }
   /**

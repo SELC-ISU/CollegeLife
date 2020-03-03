@@ -22,7 +22,8 @@ public class Sprite
     isAnimated = false;
   }
   
-  public Sprite(String filepath) { imageArray = new BufferedImage[1];
+  public Sprite(String filepath) { 
+	  imageArray = new BufferedImage[1];
     try {
       imageArray[0] = ImageIO.read(new java.io.File(filepath));
     } catch (IOException e) {

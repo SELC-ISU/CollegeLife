@@ -13,6 +13,7 @@ public class TextInterface extends GameAPI
   public int bottomChoice;
   public int selectorPos;
   public Sprite font;
+  private Sprite background;
   public Sprite selector;
   public String[] text;
   public String selected;
@@ -46,11 +47,15 @@ public class TextInterface extends GameAPI
     selected = "unimportant";
     amountBackshifted = 0;
     renderThisBadBoy = false;
+    background = null;
   }
   /*
    *run once a frame to help with the selection proccess
    */
   public void frameEvent() { 
+	  if (background != null) {
+		  background.draw(0,0);
+	  }
 	  if (selectorPos != -1) {
       if (keyPressed(87)) {
         selectorPos -= 1;
@@ -74,6 +79,13 @@ public class TextInterface extends GameAPI
 	    renderImage (image, false);
 	    }
     render();
+  }
+  /**
+   * changes the background to whatever (only .png files work) (use null for no background)
+   * @param backgroundToUse a filepath to the background image
+   */
+  public void changeBackgorund (String backgroundToUse) {
+	  background = new Sprite (backgroundToUse);
   }
   /**
    * run whenever a option is selected

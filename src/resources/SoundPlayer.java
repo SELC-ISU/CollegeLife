@@ -13,51 +13,22 @@ import javax.sound.sampled.LineListener;
 
 import main.GameCode;
 
-public class CoolCheck implements LineListener{
+public class SoundPlayer implements LineListener{
 	File soundFile;
 	File soundFile2;
 	
 	private AudioFormat format;
-	public CoolCheck (){
+	public SoundPlayer (){
 	}
 	public boolean playing = false;
-	public void play (String songName, float volume){
-		if (songName.equals("marsh")){
-			GameCode.waitUntil = 1800;
-			soundFile = new File ("music/marsh-ans theme version 2.wav");
-		}
-		if (songName.equals("god")){
-			GameCode.waitUntil = 1624;
-			soundFile = new File ("music/thank god for automobiels and the eisenhower hiway sytem attempt 6.wav");
-		}
-		if (songName.equals("extrasensory")){
-			GameCode.waitUntil = 1317;
-			soundFile = new File ("music/extrasensory.wav");
-		}
-		if (songName.equals("tital")){
-			soundFile = new File ("music/tital theme.wav");
-			GameCode.waitUntil = 696;
-		}
-		if (songName.equals("roads")){
-			soundFile = new File ("music/clear the roads (final).wav");
-			GameCode.waitUntil = 1654;
-		} 
-		if (songName.equals("bandits")) {
-			soundFile = new File ("music/vs bandits.wav");
-			GameCode.waitUntil = 1125;
-		}
-		if (songName.equals("road rage")) {
-			soundFile = new File ("music/ROAD RAGE!.wav");
-			GameCode.waitUntil = 1513;
-		}
-		if (songName.equals("mobius")) {
-			soundFile = new File ("music/mobius batte.wav");
-			GameCode.waitUntil = 1620;
-		}
-		if (songName.equals("jumping")) {
-			soundFile = new File ("music/jumping through hoops.wav");
-			GameCode.waitUntil = 1266;
-		}
+	/**
+	 * plays the given song
+	 * @param songPath a filepath that leads to the song
+	 * @param volume the volume to play it at
+	 */
+	public void play (String songPath, float volume){
+		
+		soundFile = new File (songPath);
 		try {
 		AudioInputStream ais;
 		ais = AudioSystem.getAudioInputStream(soundFile);
@@ -69,16 +40,28 @@ public class CoolCheck implements LineListener{
 		FloatControl gainControl = (FloatControl) GameCode.clip.getControl(FloatControl.Type.MASTER_GAIN);
 		gainControl.setValue(volume);
 		GameCode.clip.start();
+		GameCode.clip.loop(Clip.LOOP_CONTINUOUSLY);
 		playing = true;
 		} catch (Exception e){
 		System.out.println("whoops (error message) ");
+		System.out.println(songPath);
 		}
 		
 	}
+	/**
+	 * returns true if the song is playing
+	 * @return true if the song is playing
+	 */
 	public boolean isPlaying () {
 		return playing;
 	}
+	/**
+	 * plays a sound effect (nessasary becasue songs and sounds need to be played on diffrent clips to play at the same time)
+	 * @param volume the volume to play the effect at
+	 * @param effectName the name of the sound effect
+	 */
 	public void playSoundEffect (float volume, String effectName){
+		Clip clip2;
 		soundFile2 = new File (effectName);
 		try {
 			AudioInputStream ais2;
@@ -86,11 +69,12 @@ public class CoolCheck implements LineListener{
 		ais2 = AudioSystem.getAudioInputStream(soundFile2);
 		format2 = ais2.getFormat();
 		DataLine.Info info2 = new DataLine.Info(Clip.class, format2);
-		GameCode.clip2 = (Clip) AudioSystem.getLine (info2);
-		GameCode.clip2.open (ais2);
-		FloatControl gainControl2 = (FloatControl) GameCode.clip2.getControl(FloatControl.Type.MASTER_GAIN);
+		clip2 = (Clip) AudioSystem.getLine (info2);
+		clip2.open (ais2);
+		FloatControl gainControl2 = (FloatControl) clip2.getControl(FloatControl.Type.MASTER_GAIN);
 		gainControl2.setValue(volume);
-		GameCode.clip2.start();
+		clip2.start();
+		
 		} catch (Exception e){
 		System.out.println("whoops (error message) ");
 		}
