@@ -84,6 +84,7 @@ public class TextInterface extends GameAPI
    * changes the background to whatever (only .png files work) (use null for no background)
    * @param backgroundToUse a filepath to the background image
    */
+  //example resources/
   public void changeBackgorund (String backgroundToUse) {
 	  background = new Sprite (backgroundToUse);
   }
