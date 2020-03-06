@@ -77,4 +77,27 @@ public class Event {
 	protected void setSelected(String s){
 		GameCode.getTextInterface().selected = s.toUpperCase();
 	}
+	/**
+	 * sets the background to a new background
+	 * @param backgroundToUse a filepath to the background to change it too
+	 */
+	protected void changeBackground (String backgroundToUse){
+		GameCode.getTextInterface().changeBackgorund(backgroundToUse);
+	}
+	/**
+	 * changes the currently playing song to a new song 
+	 * @param song a filepath to the new song to play 
+	 * @param volume the volume to play the song at
+	 */
+	protected void changeMusic (String song, float volume){
+		GameCode.player.play(song, volume);
+	}
+	/**
+	 * plays a quick sound effect
+	 * @param effect a filepath to the effect you want
+	 * @param volume the volume to play the sound effect at
+	 */
+	protected void playSoundEffect (String effect, float volume){
+		GameCode.player.playSoundEffect(volume, effect);
+	}
 }
