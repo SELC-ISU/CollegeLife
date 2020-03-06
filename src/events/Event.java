@@ -61,13 +61,16 @@ public class Event {
 	 * @return weather or not that string is selected
 	 */
 	protected boolean checkSelected(String s){
-		return GameCode.getTextInterface().selected.equals(s.toUpperCase());
+		return GameCode.getTextInterface().selected.equals(s);
 	}
 	/**
 	 * gives the given options to the players
 	 * @param an array of options to give to the player
 	 */
 	protected void query(String[] s){
+		for (int i=0; i<s.length; i++){
+			s[i]=s[i].toUpperCase();
+		}
 		GameCode.getTextInterface().query(s);
 	}
 	/**

@@ -81,6 +81,8 @@ public class GameCode extends GameAPI {
   
   public void gameLoop() {
     textInterface.frameEvent();
+    // Test events like this
+    //bruh.runEventCode(); 
     graphics.setColor(new Color (0xFF3A3A));
     graphics.drawRect(520, 16, 100, 8);
     graphics.fillRect(520, 16, health, 8);

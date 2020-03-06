@@ -2,7 +2,7 @@ package events;
 
 public class RickRoll extends Event {
 	public RickRoll (){
-		super();
+		super(0);
 	}
 	public void runEventCode () {
 		super.runEventCode();

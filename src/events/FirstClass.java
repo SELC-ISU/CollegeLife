@@ -14,9 +14,9 @@ public class FirstClass extends Event {
 	super.runEventCode();
 	if (this.checkSelected("unimportant")) {
 	this.print("WHILE YOU ARE ON YOUR WAY TO YOUR FIRST CLASS, YOU CAN NOT REMEMBER WHAT CLASS YOU WERE GOING TO");
-	this.print("AS YOU AIMLESSLY WANDER AROUND YOU APPROACH A THREE WAY SLPIT ON THE PATH");
+	this.print("AS YOU AIMLESSLY WANDER AROUND YOU APPROACH A THREE WAY SLPIT ON THE path");
 	this.print("");
-	this.query(new String [] {"BRUH1", "BRUH","BRUH2"});
+	this.query(new String [] {"B", "BRUH","BRUH2"});
 	this.setSelected("lame");
 		}
 	if (this.checkSelected("BRUH1")) {
