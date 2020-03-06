@@ -16,7 +16,9 @@ public class GameCode extends GameAPI {
   private GameWindow gameWindow;
   private static TextInterface textInterface;
   DataLine.Info info;
-  public static ArrayList <Event> randomEvents = new ArrayList <Event>();
+  public static ArrayList <Event> requiredEvents = new ArrayList <Event>();
+  public static ArrayList <Event> goodEvents = new ArrayList <Event>();
+  public static ArrayList <Event> badEvents = new ArrayList <Event>();
   public static Clip clip;
   private boolean firstRun = true;
   private float volume;
@@ -149,11 +151,11 @@ public class GameCode extends GameAPI {
   }
   public void runRandomEvent () {
       if (stationaryIndex == 420) {
-          stationaryIndex = r.nextInt(randomEvents.size());
-          randomEvents.get(stationaryIndex).runEventCode();
+          stationaryIndex = r.nextInt(goodEvents.size());
+          goodEvents.get(stationaryIndex).runEventCode();
       } else {
-          if (randomEvents.get(stationaryIndex).isRunning()) {
-          randomEvents.get(stationaryIndex).runEventCode();
+          if (goodEvents.get(stationaryIndex).isRunning()) {
+          goodEvents.get(stationaryIndex).runEventCode();
           } else {
             stationaryIndex = 420;
             eventFinished = true;

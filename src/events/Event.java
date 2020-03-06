@@ -11,8 +11,16 @@ public class Event {
 	 * pretty generic constructor
 	 * @author Jeffrey
 	 */
-	public Event () {
-		GameCode.randomEvents.add(this);
+	public Event (int type) {
+		if(type==1){
+			GameCode.requiredEvents.add(this);
+		}
+		else if(type==2){
+			GameCode.goodEvents.add(this);
+		}
+		else if(type==3){
+			GameCode.badEvents.add(this);
+		}
 		isRunning = false;
 		stopped = false;
 	}
@@ -44,16 +52,16 @@ public class Event {
 	 * @param s the text to print to the screen
 	 */
 	protected void print(String s){
-		GameCode.getTextInterface().println(s);
+		GameCode.getTextInterface().println(s.toUpperCase());
 		
 	}
 	/**
 	 * checks if the string is the selected string
 	 * @param s the string to check
-	 * @return wheather or not that string is selected
+	 * @return weather or not that string is selected
 	 */
 	protected boolean checkSelected(String s){
-		return GameCode.getTextInterface().selected.equals(s);
+		return GameCode.getTextInterface().selected.equals(s.toUpperCase());
 	}
 	/**
 	 * gives the given options to the players
@@ -67,6 +75,6 @@ public class Event {
 	 * @param the string to set the selected option too
 	 */
 	protected void setSelected(String s){
-		GameCode.getTextInterface().selected = s;
+		GameCode.getTextInterface().selected = s.toUpperCase();
 	}
 }

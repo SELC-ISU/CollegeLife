@@ -1,11 +1,11 @@
 package events;
 
 
-public class EpicTestEvent extends Event {
+public class FirstClass extends Event {
 	/** 
 	 * uses the original constructer
 	 */
-	public EpicTestEvent () {
+	public FirstClass () {
 		super(1);
 	}
 	
@@ -13,7 +13,9 @@ public class EpicTestEvent extends Event {
 	public void runEventCode () {
 	super.runEventCode();
 	if (this.checkSelected("unimportant")) {
-	this.print("BRUH");
+	this.print("WHILE YOU ARE ON YOUR WAY TO YOUR FIRST CLASS, YOU CAN NOT REMEMBER WHAT CLASS YOU WERE GOING TO");
+	this.print("AS YOU AIMLESSLY WANDER AROUND YOU APPROACH A THREE WAY SLPIT ON THE PATH");
+	this.print("");
 	this.query(new String [] {"BRUH1", "BRUH","BRUH2"});
 	this.setSelected("lame");
 		}
