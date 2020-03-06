@@ -20,7 +20,7 @@ public class GameCode extends GameAPI {
   public static Clip clip;
   private boolean firstRun = true;
   private float volume;
-  static SoundPlayer player;
+  public static SoundPlayer player;
   private Graphics graphics;
   int stationaryIndex = 420;
   boolean eventFinished = false;
