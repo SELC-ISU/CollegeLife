@@ -18,7 +18,7 @@ public class RickRoll extends Event {
 			this.print("");
 			this.print("GAIN STRESS");
 			GameCode.setStress(GameCode.getStress() + 10);
-			this.changeMusic("music/never-gonna-give-you-up.wav", 6F);
+			this.changeMusic("resources/music/never-gonna-give-you-up.wav", 6F);
 			this.setSelected("lame");
 			this.stopEvent();
 			}
