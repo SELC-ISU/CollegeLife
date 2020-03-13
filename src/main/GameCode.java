@@ -9,6 +9,7 @@ import javax.sound.sampled.DataLine;
 
 import events.Template;
 import events.Event;
+import events.RickRoll;
 import resources.SoundPlayer;
 
 
@@ -29,11 +30,16 @@ public class GameCode extends GameAPI {
   public static int waitUntil;
   private int gender;     //for the random
   public String name;
+<<<<<<< HEAD
   public Template bruh = new Template ();
+=======
+  public EpicTestEvent bruh = new EpicTestEvent ();
+  public RickRoll roll = new RickRoll ();
+>>>>>>> c0ead758d192fee74ba71d43922baa84238ef9ce
   Random r = new Random();
   private int health;
   private int cash;
-  private int stress;
+  private static int stress;
   public  void initialize(){
 	if (firstRun) {
       player = new SoundPlayer();
@@ -78,11 +84,17 @@ public class GameCode extends GameAPI {
     */
     
 }
-  
+  public static void setStress (int newStress) {
+	  stress = newStress;
+  }
+  public static int getStress () {
+	  return stress;
+  }
   public void gameLoop() {
     textInterface.frameEvent();
     // Test events like this
     //bruh.runEventCode(); 
+    //roll.runEventCode();
     graphics.setColor(new Color (0xFF3A3A));
     graphics.drawRect(520, 16, 100, 8);
     graphics.fillRect(520, 16, health, 8);
@@ -119,6 +131,7 @@ public class GameCode extends GameAPI {
 
     if (textInterface.selected.equals("YES")) {
     	textInterface.refreshPage();
+    	 player.play("resources/music/duck-tales-theme.wav", volume);
     	textInterface.println("WELCOME TO ISU!!!");
     	textInterface.selected = "unimportant";
     	//title = false;
