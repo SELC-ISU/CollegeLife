@@ -9,6 +9,7 @@ import javax.sound.sampled.DataLine;
 
 import events.EpicTestEvent;
 import events.Event;
+import events.RickRoll;
 import resources.SoundPlayer;
 
 
@@ -30,10 +31,11 @@ public class GameCode extends GameAPI {
   private int gender;     //for the random
   public String name;
   public EpicTestEvent bruh = new EpicTestEvent ();
+  public RickRoll roll = new RickRoll ();
   Random r = new Random();
   private int health;
   private int cash;
-  private int stress;
+  private static int stress;
   public  void initialize(){
 	if (firstRun) {
       player = new SoundPlayer();
@@ -78,11 +80,17 @@ public class GameCode extends GameAPI {
     */
     
 }
-  
+  public static void setStress (int newStress) {
+	  stress = newStress;
+  }
+  public static int getStress () {
+	  return stress;
+  }
   public void gameLoop() {
     textInterface.frameEvent();
     // Test events like this
     //bruh.runEventCode(); 
+    roll.runEventCode();
     graphics.setColor(new Color (0xFF3A3A));
     graphics.drawRect(520, 16, 100, 8);
     graphics.fillRect(520, 16, health, 8);
