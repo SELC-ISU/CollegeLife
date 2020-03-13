@@ -1,11 +1,11 @@
 package events;
 
 
-public class EpicTestEvent extends Event {
+public class Template extends Event {
 	/** 
 	 * uses the original constructer
 	 */
-	public EpicTestEvent () {
+	public Template () {
 		super(0);
 	}
 	

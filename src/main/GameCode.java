@@ -7,7 +7,7 @@ import java.util.Random;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 
-import events.EpicTestEvent;
+import events.Template;
 import events.Event;
 import events.RickRoll;
 import resources.SoundPlayer;
@@ -30,8 +30,12 @@ public class GameCode extends GameAPI {
   public static int waitUntil;
   private int gender;     //for the random
   public String name;
+<<<<<<< HEAD
+  public Template bruh = new Template ();
+=======
   public EpicTestEvent bruh = new EpicTestEvent ();
   public RickRoll roll = new RickRoll ();
+>>>>>>> c0ead758d192fee74ba71d43922baa84238ef9ce
   Random r = new Random();
   private int health;
   private int cash;

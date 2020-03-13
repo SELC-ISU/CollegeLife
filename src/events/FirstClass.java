@@ -2,6 +2,8 @@ package events;
 
 
 public class FirstClass extends Event {
+	private boolean isLost = false;
+	Lost lost = new Lost();
 	/** 
 	 * uses the original constructer
 	 */
@@ -16,20 +18,27 @@ public class FirstClass extends Event {
 	this.print("WHILE YOU ARE ON YOUR WAY TO YOUR FIRST CLASS, YOU CAN NOT REMEMBER WHAT CLASS YOU WERE GOING TO");
 	this.print("AS YOU AIMLESSLY WANDER AROUND YOU APPROACH A THREE WAY SLPIT ON THE path");
 	this.print("");
-	this.query(new String [] {"B", "BRUH","BRUH2"});
+	this.query(new String [] {"choose to turn left", "continue on your path","choose to turn right"});
 	this.setSelected("lame");
 		}
-	if (this.checkSelected("BRUH1")) {
+	if (this.checkSelected("choose to turn left".toUpperCase())) {
 		this.print("BRUH");
 		this.stopEvent();
 		}
-	if (this.checkSelected("BRUH")) {
+	if (this.checkSelected("continue on your path".toUpperCase())) {
 		this.print("BRUH");
 		this.stopEvent();
 		}
-	if (this.checkSelected("BRUH2")) {
+	if (this.checkSelected("choose to turn right".toUpperCase())) {
 		this.print("BRUH");
+		this.stopEvent();
+		}
+	if(isLost){
+		lost.runEventCode();
+		}
+	else if(!lost.isLost()){
 		this.stopEvent();
 		}
 	}
+	
 }
