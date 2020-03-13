@@ -100,8 +100,8 @@ public class GameCode extends GameAPI {
     graphics.setColor(new Color (0xF6DA16));
     graphics.drawRect(520, 48, 100, 8);
     graphics.fillRect(520, 48, stress, 8);
-    graphics.drawString("health", 475, 25);
-    graphics.drawString("cash", 475,  40);
+    graphics.drawString("Health", 475, 25);
+    graphics.drawString("Cash", 475,  40);
     graphics.drawString("Stress", 475, 55);
     if (name != null) {
     	graphics.drawString(name, 545, 15);
