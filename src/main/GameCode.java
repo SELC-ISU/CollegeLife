@@ -115,6 +115,7 @@ public class GameCode extends GameAPI {
 
     if (textInterface.selected.equals("YES")) {
     	textInterface.refreshPage();
+    	player.play("resources/music/duck-tales-theme.wav", volume);
     	textInterface.println("WELCOME TO ISU!!!");
     	textInterface.selected = "unimportant";
     	//title = false;
