@@ -9,6 +9,7 @@ import javax.sound.sampled.DataLine;
 
 import events.Template;
 import events.Event;
+import events.PopQuiz;
 import events.RickRoll;
 import resources.SoundPlayer;
 
@@ -30,12 +31,9 @@ public class GameCode extends GameAPI {
   public static int waitUntil;
   private int gender;     //for the random
   public String name;
-<<<<<<< HEAD
   public Template bruh = new Template ();
-=======
-  public EpicTestEvent bruh = new EpicTestEvent ();
   public RickRoll roll = new RickRoll ();
->>>>>>> c0ead758d192fee74ba71d43922baa84238ef9ce
+  public PopQuiz quiz = new PopQuiz ();
   Random r = new Random();
   private int health;
   private int cash;
@@ -95,6 +93,7 @@ public class GameCode extends GameAPI {
     // Test events like this
     //bruh.runEventCode(); 
     //roll.runEventCode();
+    quiz.runEventCode();
     graphics.setColor(new Color (0xFF3A3A));
     graphics.drawRect(520, 16, 100, 8);
     graphics.fillRect(520, 16, health, 8);
@@ -131,11 +130,7 @@ public class GameCode extends GameAPI {
 
     if (textInterface.selected.equals("YES")) {
     	textInterface.refreshPage();
-<<<<<<< HEAD
-    	player.play("resources/music/duck-tales-theme.wav", volume);
-=======
     	 player.play("resources/music/duck-tales-theme.wav", volume);
->>>>>>> master
     	textInterface.println("WELCOME TO ISU!!!");
     	textInterface.selected = "unimportant";
     	//title = false;
