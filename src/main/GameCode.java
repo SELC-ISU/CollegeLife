@@ -9,6 +9,7 @@ import javax.sound.sampled.DataLine;
 
 import events.Template;
 import events.Event;
+import events.FoodTime;
 import events.PopQuiz;
 import events.RickRoll;
 import resources.SoundPlayer;
@@ -34,9 +35,10 @@ public class GameCode extends GameAPI {
   public Template bruh = new Template ();
   public RickRoll roll = new RickRoll ();
   public PopQuiz quiz = new PopQuiz ();
+  public FoodTime time = new FoodTime();
   Random r = new Random();
-  private int health;
-  private int cash;
+  private static int health;
+  private static int cash;
   private static int stress;
   public  void initialize(){
 	if (firstRun) {
@@ -82,6 +84,24 @@ public class GameCode extends GameAPI {
     */
     
 }
+  public static void setHealth (int newHealth) {
+	  health = newHealth;
+	  if (health > 100) {
+		  health = 100;
+	  }
+  }
+  public static int getHealth () {
+	  return health;
+  }
+  public static void setCash (int newCash) {
+	  cash = newCash;
+	  if (cash > 100) {
+		  cash = 100;
+	  }
+  }
+  public static int getCash () {
+	  return cash;
+  }
   public static void setStress (int newStress) {
 	  stress = newStress;
   }
@@ -93,7 +113,8 @@ public class GameCode extends GameAPI {
     // Test events like this
     //bruh.runEventCode(); 
     //roll.runEventCode();
-    quiz.runEventCode();
+   // quiz.runEventCode();
+    time.runEventCode();
     graphics.setColor(new Color (0xFF3A3A));
     graphics.drawRect(520, 16, 100, 8);
     graphics.fillRect(520, 16, health, 8);
