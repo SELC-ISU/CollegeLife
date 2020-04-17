@@ -9,11 +9,11 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineEvent;
-import javax.sound.sampled.Linepaneltener;
+import javax.sound.sampled.LineListener;
 
 import main.GameCode;
 
-public class SoundPlayer implements Linepaneltener{
+public class SoundPlayer implements LineListener{
 	File soundFile;
 	File soundFile2;
 	
@@ -35,7 +35,7 @@ public class SoundPlayer implements Linepaneltener{
 		format = ais.getFormat();
 		DataLine.Info info = new DataLine.Info(Clip.class, format);
 		GameCode.clip = (Clip) AudioSystem.getLine (info);
-		GameCode.clip.addLinepaneltener(this);
+		GameCode.clip.addLineListener(this);
 		GameCode.clip.open (ais);
 		FloatControl gainControl = (FloatControl) GameCode.clip.getControl(FloatControl.Type.MASTER_GAIN);
 		gainControl.setValue(volume);
