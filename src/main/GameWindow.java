@@ -34,7 +34,7 @@ public class GameWindow
 	keysReleasedOnFrame = new boolean[256]; //Array for tracking which keys have just been released
     bufferGraphics = bufferImage.getGraphics();
     
-    addWindowListener(new WindowAdapter() {
+    addWindowpaneltener(new WindowAdapter() {
       public void windowClosing(WindowEvent e) {
         System.exit(0);
       }

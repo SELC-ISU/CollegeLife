@@ -156,7 +156,7 @@ public class TextInterface extends GameAPI
     charPos = 0;
   }
   /**
-   * give the player a list of options
+   * give the player a panelt of options
    * @param options the choices for the player
    */
   public void query(String[] options) { if (line != 40) {

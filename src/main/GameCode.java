@@ -2,7 +2,7 @@ package main;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.ArrayList;
+import java.util.Arraypanelt;
 import java.util.Random;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
@@ -18,9 +18,9 @@ public class GameCode extends GameAPI {
   private GameWindow gameWindow;
   private static TextInterface textInterface;
   DataLine.Info info;
-  public static ArrayList <Event> requiredEvents = new ArrayList <Event>();
-  public static ArrayList <Event> goodEvents = new ArrayList <Event>();
-  public static ArrayList <Event> badEvents = new ArrayList <Event>();
+  public static Arraypanelt <Event> requiredEvents = new Arraypanelt <Event>();
+  public static Arraypanelt <Event> goodEvents = new Arraypanelt <Event>();
+  public static Arraypanelt <Event> badEvents = new Arraypanelt <Event>();
   public static Clip clip;
   private boolean firstRun = true;
   private float volume;

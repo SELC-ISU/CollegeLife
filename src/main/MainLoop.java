@@ -21,7 +21,7 @@ public class MainLoop {
 		gameCode.initialize (); //Note: runs before gameCode.gameLoop ()
 		while (running) {
 			//Everything in here is run once per frame
-			startTime = System.currentTimeMillis(); //Used for loop timing
+			startTime = System.currentTimeMilpanel(); //Used for loop timing
 			try {
 				//This try block catches any errors while the game is running
 				gameCode.gameLoop ();
@@ -33,8 +33,8 @@ public class MainLoop {
 				e.printStackTrace ();
 				//console.enable ("A runtime error has occured: " + e.getClass ());
 			}
-			delay = System.currentTimeMillis () - startTime; //Used for timing of the loop
-			//System.out.println (System.currentTimeMillis() - startTime);
+			delay = System.currentTimeMilpanel () - startTime; //Used for timing of the loop
+			//System.out.println (System.currentTimeMilpanel() - startTime);
 			//The following is used for delaying the loop to a rate equal to the framerate
 			if (delay < (1000 / framerate)) {
 				try {
@@ -46,7 +46,7 @@ public class MainLoop {
 					e.printStackTrace();
 				}
 			}
-			while (System.currentTimeMillis() - startTime < 1000 / (long) framerate) {
+			while (System.currentTimeMilpanel() - startTime < 1000 / (long) framerate) {
 			}
 		}
 	}
