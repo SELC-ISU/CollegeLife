@@ -35,7 +35,7 @@ public class GameCode extends GameAPI {
   public RickRoll roll = new RickRoll ();
   public PopQuiz quiz = new PopQuiz ();
   Random r = new Random();
-  private int health;
+  private static int health;
   private int cash;
   private static int stress;
   public  void initialize(){
@@ -85,9 +85,19 @@ public class GameCode extends GameAPI {
   public static void setStress (int newStress) {
 	  stress = newStress;
   }
+  
   public static int getStress () {
 	  return stress;
   }
+  
+  public static void setHealth (int newHealth) {
+	  health = newHealth;
+  }
+  
+  public static int getHealth () {
+	  return health;
+  }
+  
   public void gameLoop() {
     textInterface.frameEvent();
     // Test events like this

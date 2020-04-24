@@ -129,7 +129,9 @@ public class Jessica extends Event {
 									this.print("SHE SAYS (OK THAT SOUNDS PRETTY GOOD)");
 									this.print("UNDER NORMAL CIRCUMSTANCES YOU SHOULD NEVER CHOOSE THE CHEAP OPTION, BUT IN THIS PARTITCULAR SITUATION YOU'RE COLLEGE STUDENTS");
 									this.print("SO THIS IS A VERY VIABLE OPTION AND ON TOP OF THAT SHE ACTUALLY LOOKS RELIEVED THAT YOU CHOOSE TO GO THERE");
+									this.print("YOU EAT... TALK FOR A WHILE... GET HER NUMBER AND GO HOME");
 									
+									GameCode.setStress(GameCode.getStress() - 2);
 	
 									//this.stopEvent();
 								}
@@ -170,7 +172,10 @@ public class Jessica extends Event {
 														
 														GameCode.setStress(GameCode.getStress() - 8);
 														
+														break;
 													}
+												}
+												
 												if(realChance == 1) {
 													this.print("SHE SAYS (I DON'T KNOW IF WE SHOULD SEE EACH OTHER AGAIN, MY BOYFRIEND DOESN'T REALLY WANT ME TO BE TALKING TO GUYS HE DOESN'T KNOW... ");
 													this.print("THANKS FOR INVITING ME OUT THOUGH I REALLY APPRECIATE IT)");
@@ -180,6 +185,7 @@ public class Jessica extends Event {
 													break;
 													//this.stopEvent();
 												}
+												
 												if(realChance == 2) {
 													this.print("SHE SAYS (WHAT WILL I DO WITH THAT NUMBER IF I GIVE IT TO YOU?)");
 													this.query(new String [] {"YOU SAY(CALL IT?)", "YOU SAY(I WOULD TEXT YOU?)", "YOU SAY(I WOULD GIVE IT AWAY TO A LOT OF GUYS) #SARCASTICALLY", "KISS HER"});
@@ -191,60 +197,90 @@ public class Jessica extends Event {
 														GameCode.setStress(GameCode.getStress() - 2);
 														
 														break;
-														
 														//this.stopEvent();
 													}
-												}
+												
 													
-												if (this.checkSelected("YOU SAY(I WOULD TEXT YOU?")) {
-													this.print("SHE SAYS(HMMMMM... I GUESS SOOOOOOOO");
-													this.print("");
-													this.print("SHE GIVES YOU HER NUMBER, SAYS GOODBYE, AND LEAVES");
-													
-													break;
-													//this.stopEvent();
-												}
-													
-												if (this.checkSelected("YOU SAY(I WOULD GIVE IT AWAY TO A LOT OF GUYS) #SARCASTICALLY")) {
-														
-													realChance = chance.nextInt(1);
-														
-													if(realChance == 0) {
-														this.print("SHE SAYS (HA HA... VERY FUNNY :). SHE GIVES YOU HER NUMBER AND WHISPERS");
-														this.print("I REALLY HOPE I GET TO SHE YOU AGAIN ;) )");
-														this.print("SHE SAYS IT JUST SOFT ENOUGH THAT IT SENDS A SHIVER UP YOUR SPINE");
-														this.print("SHE GETS ON THE BUS AND WAVES YOU GOODBYE");
-														GameCode.setStress(GameCode.getStress() - 3);
-														
-														break;
-														//this.stopEvent();
-													}
-														
-													if(realChance == 1) {
-														this.print("SHE SAYS (OHHHHH... SIGN ME UP!)");
+													if (this.checkSelected("YOU SAY(I WOULD TEXT YOU?")) {
+														this.print("SHE SAYS(HMMMMM... I GUESS SOOOOOOOO");
 														this.print("");
-														this.print("YOU GIVE HER YOUR NUMBER, SHE GETS ON THE BUS, AND LEAVES");
-														this.print("WELL... YOU BLEW IT...");
-														GameCode.setStress(GameCode.getStress() + 3);
-														
+														this.print("SHE GIVES YOU HER NUMBER, SAYS GOODBYE, AND LEAVES");
+															
 														break;
+														//this.stopEvent();
 													}
+															
+													if (this.checkSelected("YOU SAY(I WOULD GIVE IT AWAY TO A LOT OF GUYS) #SARCASTICALLY")) {
+																
+														realChance = chance.nextInt(1);
+																
+														if(realChance == 0) {
+															this.print("SHE SAYS \"HA HA... VERY FUNNY :)\". SHE GIVES YOU HER NUMBER AND WHISPERS");
+															this.print("\"I REALLY HOPE I GET TO SHE YOU AGAIN ;)\")");
+															this.print("SHE SAYS IT JUST SOFT ENOUGH THAT IT SENDS A SHIVER UP YOUR SPINE");
+															this.print("SHE GETS ON THE BUS AND WAVES YOU GOODBYE");
+															GameCode.setStress(GameCode.getStress() - 15);
+																
+															break;
+															//this.stopEvent();
+														}
+														
+														if(realChance == 1) {
+															this.print("SHE SAYS (OHHHHH... SIGN ME UP!)");
+															this.print("");
+															this.print("YOU GIVE HER YOUR NUMBER, SHE GETS ON THE BUS, AND LEAVES");
+															this.print("WELL... YOU BLEW IT...");
+															GameCode.setStress(GameCode.getStress() + 3);
+																
+															break;
+														}
+													}
+													
+													if (this.checkSelected("KISS HER")) {
+														realChance = chance.nextInt(1);
+														
+														if (realChance == 0) {
+															this.print("YOU KISS HER AND SHE LUNGES BACKWARDS AND LOOKS SHOCKED");
+															this.print("");
+															this.print("SHE SAYS \"HOW DARE YOU!\"");
+															this.print("\"I HAVE A BOYFRIEND FOR YOUR INFORMATION!\"");
+															this.print("SHE SLAPS YOU IN THE FACE AND STORMS AWAY...");
+															this.print("YOU LOOK AROUND AND SEE A WHOLE BUNCH OF PEOPLE STARING AT YOU");
+															
+															GameCode.setStress(GameCode.getStress() + 15);
+															
+															break;
+														}
+														
+														if (realChance == 1) {
+															this.print("YOU KISS HER AND SHE TAKES A LITTLE STEP BACK");
+															this.print("SHE SAYS \"WOW... I DON'T KNOW WHAT TO SAY...\"");
+															this.print("SHE WHISPERS INTO YOUR EAR \"I HOPE WE MEET AGAIN SOON ;)\"");
+															this.print("SHE GETS ONTO THE BUS AND WINKS AT YOU AS THE BUS DRIVES AWAY");
+															this.print("");
+															this.print("WELL THAT WENT BETTER THAN EXPECTED...");
+															
+															GameCode.setStress(GameCode.getStress() - 10);
+															
+															break;
+															
+														}	
+													}	
 													
 												}
 												
-										if (this.checkSelected("FORGET ABOUT IT")) {
-												this.print("SHE SAYS (ARE YOU SURE?!)");
+									if (this.checkSelected("FORGET ABOUT IT")) {
+											this.print("SHE SAYS \"ARE YOU SURE?!\"");
 													
-												this.query(new String [] {"YOU SAY (YA I DON'T REALLY KNOW WHY I WENT THIS WAY", "YEP, SEE YA!"});
+											this.query(new String [] {"YOU SAY \"YA I DON'T REALLY KNOW WHY I WENT THIS WAY\"", "YOU SAY \"YEP, SEE YA!\""});
 													
-												if (this.checkSelected("YOU SAY (YA I DON'T REALLY KNOW WHY I WENT THIS WAY")) {
+											if (this.checkSelected("YOU SAY (YA I DON'T REALLY KNOW WHY I WENT THIS WAY")) {
 													this.print("OH, OK... SEE YA LATER");
 													this.print("BRUH");
 													this.print("WELL THAT WAS STRESSFUL...");
 													GameCode.setStress(GameCode.getStress() + 5);
 													
 													break;
-													//this.stopEvent();
 												}
 													
 												if (this.checkSelected("YUP, SEE YA!")) {
@@ -257,7 +293,8 @@ public class Jessica extends Event {
 														this.print("WOULD YOU LIKE ANOTHER CHANCE?");
 															
 														this.query(new String [] {"YES", "NO"});
-															
+														
+														//FIXME
 														if (this.checkSelected("YES")) {
 															this.print("REDEMPTION ACCEPTED!");
 															this.print("YOU GO BACK THREE STEPS!");
@@ -267,41 +304,429 @@ public class Jessica extends Event {
 															break;
 														}
 													}
+													
 													else {
 														break;
 													}
-														
-														
-													//this.stopEvent();
 												}
-													
-													
-												//this.stopEvent();
+												}
 											}
-										}
+										
+											if (this.checkSelected("I FORGOT TO ASK IF YOU WANTED A RIDE HOME")) {
+												this.print("SHE SAYS (OH! SURE THAT WOULD BE GREAT!");
+												this.print("YOU TAKE HER HOME AND WAVE GOOD BYE");
+												this.print("");
+												this.print("SMART CHOICE");
 												
-									}
-										//this.stopEvent();
-									}
-									if (this.checkSelected("FORGET ABOUT IT")) {
-										this.print("BRUH");
+												GameCode.setStress(GameCode.getStress() - 10);
+												
+												break;
+											}
+											
+											if (this.checkSelected("I HATE YOU")) {
+												this.print("YOU STORM OFF!");
+												this.print("YOU LOOK BEHIND YOU AND SHE LOOKS A LITTLE FRIGHTENED...");
+												this.print("");
+												this.print("WELL YOU JUST RUINED YOUR CHANCES...");
+												
+												break;
+											}
+											
+											if (this.checkSelected("KISS HER")) {
+												Random chance = new Random();
+												int realChance = chance.nextInt(1);
+												
+												if (realChance == 0) {
+													this.print("YOU KISS HER AND SHE LUNGES BACKWARDS AND LOOKS SHOCKED");
+													this.print("");
+													this.print("SHE SAYS \"HOW DARE YOU!\"");
+													this.print("\"I HAVE A BOYFRIEND FOR YOUR INFORMATION!\"");
+													this.print("SHE SLAPS YOU IN THE FACE AND STORMS AWAY...");
+													this.print("YOU LOOK AROUND AND SEE A WHOLE BUNCH OF PEOPLE STARING AT YOU");
+													
+													GameCode.setStress(GameCode.getStress() + 15);
+													
+													break;
+												}
+												
+												if (realChance == 1) {
+													this.print("YOU KISS HER AND SHE TAKES A LITTLE STEP BACK");
+													this.print("SHE SAYS \"WOW... I DON'T KNOW WHAT TO SAY...\"");
+													this.print("SHE WHISPERS INTO YOUR EAR \"I HOPE WE MEET AGAIN SOON ;)\"");
+													this.print("SHE GETS ONTO THE BUS AND WINKS AT YOU AS THE BUS DRIVES AWAY");
+													this.print("");
+													this.print("WELL THAT WENT BETTER THAN EXPECTED...");
+													
+													GameCode.setStress(GameCode.getStress() - 10);
+													
+													break;
+													
+												}	
+											}	
+										}
 										//this.stopEvent();
 									}
 									if (this.checkSelected("SCREAM AND SHOUT UNTIL SHE CAN HEAR YOU")) {
-										this.print("BRUH");
-										//this.stopEvent();
-									}
-									if (this.checkSelected("THROW SOMETHING AT HER")) {
-										this.print("BRUH");
-										//this.stopEvent();
-									}
+										this.print("YOU SCREAM AS LOUD AS YOU CAN CALLING HER NAME");
+										Random chance = new Random();
+										int realChance = chance.nextInt(1);
 										
-									//this.stopEvent();
+										if(realChance == 0) {
+											this.print("SHE HEARS YOU AND WALKS BACK");
+											this.print("SHE SAYS \"YA... WHAT'S UP?\"");
+											this.print("");
+											this.print("WHAT DO YOU SAY?");
+											this.query(new String [] {"YOU SAY \"I JUST WANTED TO SEE YOUR FACE AGAIN\"","YOU SAY \"NOTHING... I JUST LIKE TALKING TO YOU :)\"", "LEAVE", "MAKE A RUCKUS"});
+											
+											if (this.checkSelected("YOU SAY \"I JUST WANTED TO SEE YOUR FACE AGAIN\"")) {
+												this.print("SHE BLUSHES AND SAYS \"STOP... YOU'RE TOO KIND");
+												this.print("SHE GIVES YOU A HUG AND SAYS NOW I REALLY HAVE TO GO THIS TIME");
+												this.print("");
+												this.print("AND WITH THAT. SHE LEAVES");
+												
+												GameCode.setStress(GameCode.getStress() - 8);
+												
+												break;
+											}
+											
+											if (this.checkSelected("YOU SAY \"NOTHING... I JUST LIKE TALKING TO YOU :)\"")) {
+												this.print("SHE SAYS \"OH YOU...\"");
+												this.print("\"I REALLY HAVE TO GO THOUGH... I ENJOYED EATING WITH YOU AND I HOPE WE MEET AGAIN");
+												this.print("");
+												this.print("SHE LEAVES ANDDDDDD YOU FORGOT HER NUMBER");
+												
+												break;
+											}
+											
+											if (this.checkSelected("LEAVE")) {
+												this.print("WOW");
+												
+												break;
+											}
+											
+											if (this.checkSelected("MAKE A RUCKUS")) {
+												this.print("YOU BANG THINGS AGAINST THE WALL AND REALLY MAKE LOUD NOISES");
+												this.print("SHE HIDES HER FACE AND ACTS LIKE SHE DOESN'T KNOW YOU");
+												this.print("SHE SPEED WALKS OUT THE BUILDING");
+												this.print("");
+												this.print("WHY YOU GOTTA BE SO LOUD");
+												
+												GameCode.setStress(GameCode.getStress() + 5);
+												
+												break;
+											}
+										}
+										
+										if(realChance == 1) {
+											this.print("YOU TRIED AND YOU FAILED");
+											this.print("THE ONLY THING YOU MANAGED TO DO IS MAKE PEOPLE AROUND YOU LOOK AT YOU LIKE YOU'RE CRAZY");
+											this.print("");
+											this.print("GOOD JOB");
+											
+											GameCode.setStress(GameCode.getStress() + 5);
+											
+											break;
+										}
 									}
+									
+									if (this.checkSelected("THROW SOMETHING AT HER")) {
+
+										Random chance = new Random();
+										int realChance = chance.nextInt(2);
+										
+										this.print("WHAT DO YOU THROW?");
+										this.query(new String [] {"A NAPKIN CONTAINER", "A TRAY", "YOUR BACKPACK", "A NAPKIN", "A CALCULATOR"});
+										
+										if (this.checkSelected("A NAPKIN CONTAINER")) {
+											this.print("YOU FIND IT ON THE TABLE");
+											this.print("YOU AIM AND");
+											
+											if (realChance == 0) {
+												this.print("YOU MISSED HER");
+												this.print("ANNNNNNNDDDDD");
+												this.print("SHE GOT AWAY");
+												this.print("");
+												this.print("DARN");
+												
+												break;
+											}
+											if (realChance == 1) {
+												this.print("YOU MISSED HER");
+												this.print("ANNNNNNNDDDDD");
+												this.print("YOU BROKE A WINDOW TOO...");
+												this.print("YOU END UP PAYING A HEFTY FINE FOR THE WINDOW");
+												this.print("");
+												
+												break;
+											}
+											
+											if (realChance == 2) {
+												this.print("YOU HIT HER");
+												this.print("ANNNNNNNDDDDD");
+												this.print("SHE SEES YOU AND COMES BACK");
+												
+												realChance = chance.nextInt(1);
+												
+												if(realChance == 0) {
+													this.print("SHE HEARS YOU AND WALKS BACK");
+													this.print("SHE SAYS \"YA... WHAT'S UP?\"");
+													this.print("");
+													this.print("WHAT DO YOU SAY?");
+													this.query(new String [] {"YOU SAY \"I JUST WANTED TO SEE YOUR FACE AGAIN\"","YOU SAY \"NOTHING... I JUST LIKE TALKING TO YOU :)\"", "LEAVE", "KISS HER"});
+													
+													if (this.checkSelected("YOU SAY \"I JUST WANTED TO SEE YOUR FACE AGAIN\"")) {
+														this.print("SHE BLUSHES AND SAYS \"STOP... YOU'RE TOO KIND");
+														this.print("SHE SAYS \"YOU KNOW THAT KIND OF HURT\" AS SHE LIGHTLY PUNCHES YOU IN THE SHOULDER");
+														this.print("SHE GIVES YOU A HUG");
+														this.print("");
+														this.print("AND WITH THAT. SHE LEAVES");
+														
+														GameCode.setStress(GameCode.getStress() - 10);
+														
+														break;
+													}
+													
+													if (this.checkSelected("YOU SAY \"NOTHING... I JUST LIKE TALKING TO YOU :)\"")) {
+														this.print("SHE SAYS \"OH YOU...\"");
+														this.print("\"I REALLY HAVE TO GO THOUGH... I ENJOYED EATING WITH YOU AND I HOPE WE MEET AGAIN");
+														this.print("");
+														this.print("SHE LEAVES ANDDDDDD YOU FORGOT HER NUMBER");
+														
+														break;
+													}
+													
+													if (this.checkSelected("LEAVE")) {
+														this.print("WOW");
+														
+														break;
+													}
+													
+													if (this.checkSelected("KISS HER")) {
+														
+														realChance = chance.nextInt(1);
+														
+														if (realChance == 0) {
+															this.print("YOU KISS HER AND SHE LUNGES BACKWARDS AND LOOKS SHOCKED");
+															this.print("");
+															this.print("SHE SAYS \"HOW DARE YOU!\"");
+															this.print("\"I HAVE A BOYFRIEND FOR YOUR INFORMATION!\"");
+															this.print("SHE SLAPS YOU IN THE FACE AND STORMS AWAY...");
+															this.print("YOU LOOK AROUND AND SEE A WHOLE BUNCH OF PEOPLE STARING AT YOU");
+															
+															GameCode.setStress(GameCode.getStress() + 15);
+															
+															break;
+														}
+														
+														if (realChance == 1) {
+															this.print("YOU KISS HER AND SHE TAKES A LITTLE STEP BACK");
+															this.print("SHE SAYS \"WOW... I DON'T KNOW WHAT TO SAY...\"");
+															this.print("SHE WHISPERS INTO YOUR EAR \"I HOPE WE MEET AGAIN SOON ;)\"");
+															this.print("SHE  WINKS AT YOU AS SHE LEAVES THE BUILDING");
+															this.print("");
+															this.print("WELL THAT WENT BETTER THAN EXPECTED...");
+															
+															GameCode.setStress(GameCode.getStress() - 10);
+															
+															break;
+															
+														}
+													}
+												}
+												
+												if(realChance == 1) {
+													this.print("YOU TRIED AND YOU FAILED");
+													this.print("THE ONLY THING YOU MANAGED TO DO IS MAKE PEOPLE AROUND YOU LOOK AT YOU LIKE YOU'RE CRAZY");
+													this.print("");
+													this.print("GOOD JOB");
+													
+													break;
+												}
+											}
+										}
+										
+										if (this.checkSelected("A TRAY")) {
+											
+											realChance = chance.nextInt(1);
+											
+											this.print("YOU GRAB THE TRAY AND CHUCK IT");
+											
+											if(realChance == 0) {
+												this.print("THE TRAY HITS HER");
+												this.print("HITS HER A LITTLE TOO WELL");
+												this.print("");
+												this.print("SHE DEFINITELY HAS A CONCUSSION NOW");
+												this.print("WHY DID YOU THINK THIS WAS A GOOD IDEA");
+												
+												GameCode.setStress(GameCode.getStress() + 15);
+												
+												break;
+											}
+											
+											if(realChance == 1) {
+												this.print("THE TRAY HITS THE LADY BESIDE HER");
+												this.print("LUCKY FOR YOU SHE WAS A STATE CHAMP WRESTLER WHO CAN TAKE ANYTHING...");
+												this.print("UNLUCKY FOR YOU THAT SHE HAS ANGER ISSUES...");
+												this.print("SHE BREAK THE TRAY IN HALF AND RUNS OVER FAST ENOUGH TO WHERE YOU CAN'T RUN AWAY");
+												this.print("SHE PINS YOU AGAINST THE TABLE AND BREAKS YOUR ARM");
+												this.print("");
+												this.print("I DON'T EVEN FEEL SORRY FOR YOU...");
+												
+												GameCode.setHealth(GameCode.getHealth() - 20);	
+												
+												break;			
+											}
+
+										}
+										
+										if (this.checkSelected("YOUR BACKPACK")) {
+											this.print("YOU REACH FOR YOUR BACKPACK");
+											this.print("BUT AT THE SAME MOMENT YOU REALIZE THAT THIS IS A HORRIBLE CHOICE");
+											this.print("YOU SPEND A MINUTE CONTEMPLATING YOUR LIFE DECISIONS");
+											this.print("YOU LET HER GET AWAY BUT YOU MADE THE RIGHT DECISION");
+											this.print("");
+											this.print("GOOD JOB");
+											
+											break;
+										}
+										
+										if (this.checkSelected("A NAPKIN")) {
+											this.print("WHY EVEN TRY..");
+											this.print("");
+											this.print("SHE'S GONE");
+											
+											break;
+										}
+										
+										if (this.checkSelected("A CALCULATOR")) {
+											this.print("YOU REACH INTO YOUR BAG AND REALIZE YOU DON'T REMEMBER WHAT POCKET IT'S IN...");
+											this.print("");
+											this.print("WHICH POCKET DO YOU TRY?");
+											
+											this.query(new String [] {"FRONT POCKET", "SIDE POCKET"});
+												if (this.checkSelected("FRONT POCKET")) {
+													this.print("YOU ZIP OPEN THE FRONT POCKET");
+													this.print("SEARCH THROUGH ALL OF THE LOOSE PAPERS");
+													this.print("YOU REALLY HAVE TO CLEAN YOUR BACKPACK");
+													this.print("");
+													this.print("YOU EVENTUALLY REALIZE THAT SHE GOT AWAY AND IT WASN'T EVEN WORTH LOOKING FOR");
+
+													break;
+												}
+											
+												if (this.checkSelected("SIDE POCKET")) {
+													this.print("YOU ZIP OPEN THE SIDE POCKET");
+													this.print("SEARCH THROUGH ALL OF THE LOOSE PAPERS");
+													this.print("YOU REALLY HAVE TO CLEAN YOUR BACKPACK");
+													this.print("");
+													this.print("YOU FIND IT!");
+													this.print("YOU AIM AND ");
+													
+													realChance = chance.nextInt(1);
+													
+													if (realChance == 0) {
+														this.print("YOU MISSED HER");
+														this.print("ANNNNNNNDDDDD");
+														this.print("SHE GOT AWAY");
+														this.print("");
+														this.print("DARN");
+														
+														break;
+													}
+													
+													if (realChance == 2) {
+														this.print("YOU HIT HER");
+														this.print("ANNNNNNNDDDDD");
+														this.print("SHE SEES YOU AND COMES BACK");
+														
+														realChance = chance.nextInt(1);
+														
+														if(realChance == 0) {
+															this.print("SHE HEARS YOU AND WALKS BACK");
+															this.print("SHE SAYS \"YA... WHAT'S UP?\"");
+															this.print("");
+															this.print("WHAT DO YOU SAY?");
+															this.query(new String [] {"YOU SAY \"I JUST WANTED TO SEE YOUR FACE AGAIN\"","YOU SAY \"NOTHING... I JUST LIKE TALKING TO YOU :)\"", "LEAVE", "KISS HER"});
+															
+															if (this.checkSelected("YOU SAY \"I JUST WANTED TO SEE YOUR FACE AGAIN\"")) {
+																this.print("SHE BLUSHES AND SAYS \"STOP... YOU'RE TOO KIND");
+																this.print("SHE SAYS \"YOU KNOW THAT KIND OF HURT\" AS SHE LIGHTLY PUNCHES YOU IN THE SHOULDER");
+																this.print("SHE GIVES YOU A HUG");
+																this.print("");
+																this.print("AND WITH THAT. SHE LEAVES");
+																
+																GameCode.setStress(GameCode.getStress() - 10);
+																
+																break;
+															}
+															
+															if (this.checkSelected("YOU SAY \"NOTHING... I JUST LIKE TALKING TO YOU :)\"")) {
+																this.print("SHE SAYS \"OH YOU...\"");
+																this.print("\"I REALLY HAVE TO GO THOUGH... I ENJOYED EATING WITH YOU AND I HOPE WE MEET AGAIN");
+																this.print("");
+																this.print("SHE LEAVES ANDDDDDD YOU FORGOT HER NUMBER");
+																
+																break;
+															}
+															
+															if (this.checkSelected("LEAVE")) {
+																this.print("WOW");
+																
+																break;
+															}
+															
+															if (this.checkSelected("KISS HER")) {
+																
+																realChance = chance.nextInt(1);
+																
+																if (realChance == 0) {
+																	this.print("YOU KISS HER AND SHE LUNGES BACKWARDS AND LOOKS SHOCKED");
+																	this.print("");
+																	this.print("SHE SAYS \"HOW DARE YOU!\"");
+																	this.print("\"I HAVE A BOYFRIEND FOR YOUR INFORMATION!\"");
+																	this.print("SHE SLAPS YOU IN THE FACE AND STORMS AWAY...");
+																	this.print("YOU LOOK AROUND AND SEE A WHOLE BUNCH OF PEOPLE STARING AT YOU");
+																	
+																	GameCode.setStress(GameCode.getStress() + 15);
+																	
+																	break;
+																}
+																
+																if (realChance == 1) {
+																	this.print("YOU KISS HER AND SHE TAKES A LITTLE STEP BACK");
+																	this.print("SHE SAYS \"WOW... I DON'T KNOW WHAT TO SAY...\"");
+																	this.print("SHE WHISPERS INTO YOUR EAR \"I HOPE WE MEET AGAIN SOON ;)\"");
+																	this.print("SHE  WINKS AT YOU AS SHE LEAVES THE BUILDING");
+																	this.print("");
+																	this.print("WELL THAT WENT BETTER THAN EXPECTED...");
+																	
+																	GameCode.setStress(GameCode.getStress() - 10);
+																	
+																	break;
+																	
+																}
+															}
+														}
+														
+														if(realChance == 1) {
+															this.print("YOU TRIED AND YOU FAILED");
+															this.print("THE ONLY THING YOU MANAGED TO DO IS MAKE PEOPLE AROUND YOU LOOK AT YOU LIKE YOU'RE CRAZY");
+															this.print("");
+															this.print("GOOD JOB");
+															
+															break;
+														}
+													}
+												}
+										}
+									}
+								}
+								
 								if (this.checkSelected("CHOOSE THE CHEAP OPTION")) {
 									this.print("BRUH");
 									//this.stopEvent();
 								}
+								
 								if (this.checkSelected("CHOOSE THE CHEAP OPTION")) {
 									this.print("BRUH");
 									//this.stopEvent();
@@ -354,8 +779,7 @@ public class Jessica extends Event {
 			}
 				
 			//this.stopEvent();
-				
-			}
+			
 			
 			if (this.checkSelected("SAY (WHOSE ASKING?)")) {
 				this.print("BRUH");
