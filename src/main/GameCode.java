@@ -9,6 +9,7 @@ import javax.sound.sampled.DataLine;
 
 import events.Template;
 import events.Event;
+import events.Jessica;
 import events.PopQuiz;
 import events.RickRoll;
 import resources.SoundPlayer;
@@ -34,6 +35,7 @@ public class GameCode extends GameAPI {
   public Template bruh = new Template ();
   public RickRoll roll = new RickRoll ();
   public PopQuiz quiz = new PopQuiz ();
+  public Jessica jessica = new Jessica ();
   Random r = new Random();
   private static int health;
   private int cash;
@@ -104,6 +106,7 @@ public class GameCode extends GameAPI {
     //bruh.runEventCode(); 
     //roll.runEventCode();
     //quiz.runEventCode();
+    jessica.runEventCode();
     graphics.setColor(new Color (0xFF3A3A));
     graphics.drawRect(520, 16, 100, 8);
     graphics.fillRect(520, 16, health, 8);
