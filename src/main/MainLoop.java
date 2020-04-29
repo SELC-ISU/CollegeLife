@@ -34,7 +34,7 @@ public class MainLoop {
 				//console.enable ("A runtime error has occured: " + e.getClass ());
 			}
 			delay = System.currentTimeMillis () - startTime; //Used for timing of the loop
-			//System.out.println (System.currentTimeMillis() - startTime);
+			//System.out.println (System.currentTimeMilpanel() - startTime);
 			//The following is used for delaying the loop to a rate equal to the framerate
 			if (delay < (1000 / framerate)) {
 				try {
