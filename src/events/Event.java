@@ -41,10 +41,18 @@ public class Event {
 		isRunning = false;
 	}
 	/**
+	 * resets the event so it can be used again
+	 */
+	public void unstopEvent () {
+		stopped = true;
+		isRunning = false;
+	}
+	/**
 	 * returns true if the event is still happening
 	 * @return true if the event is still happening
 	 */
 	public boolean isRunning () {
+		
 		return isRunning;
 	}
 	/**

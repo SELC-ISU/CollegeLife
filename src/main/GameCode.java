@@ -9,6 +9,8 @@ import javax.sound.sampled.DataLine;
 
 import events.Template;
 import events.Event;
+import events.FartedInClass;
+import events.FirstClass;
 import events.FoodTime;
 import events.PopQuiz;
 import events.RickRoll;
@@ -25,7 +27,9 @@ public class GameCode extends GameAPI {
   public static Clip clip;
   private boolean firstRun = true;
   private float volume;
+  private boolean gameStarted = false;
   public static SoundPlayer player;
+  private int eventCount = 0;
   private Graphics graphics;
   int stationaryIndex = 420;
   boolean eventFinished = false;
@@ -36,7 +40,10 @@ public class GameCode extends GameAPI {
   public RickRoll roll = new RickRoll ();
   public PopQuiz quiz = new PopQuiz ();
   public FoodTime time = new FoodTime();
+  public FartedInClass d = new FartedInClass();
+  FirstClass first = new FirstClass();
   Random r = new Random();
+  private boolean decision = false;
   private static int health;
   private static int cash;
   private static int stress;
@@ -114,7 +121,7 @@ public class GameCode extends GameAPI {
     //bruh.runEventCode(); 
     //roll.runEventCode();
    // quiz.runEventCode();
-    time.runEventCode();
+   // time.runEventCode();
     graphics.setColor(new Color (0xFF3A3A));
     graphics.drawRect(520, 16, 100, 8);
     graphics.fillRect(520, 16, health, 8);
@@ -154,6 +161,7 @@ public class GameCode extends GameAPI {
     	 player.play("resources/music/duck-tales-theme.wav", volume);
     	textInterface.println("WELCOME TO ISU!!!");
     	textInterface.selected = "unimportant";
+    	gameStarted = true;
     	//title = false;
     }
     if(textInterface.selected.equals("NO")) {
@@ -173,7 +181,34 @@ public class GameCode extends GameAPI {
     	}
     }
     
-
+    if (gameStarted) {
+    	if (!eventFinished) {
+    		
+	    	if (eventCount == 0) {
+	    		requiredEvents.get(0).runEventCode();
+	    		if (!requiredEvents.get(0).isRunning()) {
+	    			eventCount = eventCount + 1;
+	    			GameCode.textInterface.selected = "unimportant";
+	    		}
+	    	} else {
+	    		if (eventCount == 5) {
+	    			requiredEvents.get(1).runEventCode();
+	    		} else {
+	    			if (decision) {
+	    				this.runRandomGoodEvent();
+	    			} else {
+	    				this.runRandomBadEvent();
+	    			}
+	    		}
+	    	}
+    	} else {
+    		
+    		GameCode.textInterface.selected = "unimportant";
+    		eventCount = eventCount + 1;
+    		eventFinished = false;
+    		decision = r.nextBoolean();
+    	}
+    }
    
 
   }
@@ -184,14 +219,38 @@ public class GameCode extends GameAPI {
   public static TextInterface getTextInterface () {
       return textInterface;
   }
-  public void runRandomEvent () {
+  public void runRandomGoodEvent () {
       if (stationaryIndex == 420) {
-          stationaryIndex = r.nextInt(goodEvents.size());
+    	 try {
+          stationaryIndex = r.nextInt(goodEvents.size() - 1);
+    	 } catch (IllegalArgumentException e) {
+    		 stationaryIndex = 0;
+    	 }
           goodEvents.get(stationaryIndex).runEventCode();
       } else {
+    	
           if (goodEvents.get(stationaryIndex).isRunning()) {
           goodEvents.get(stationaryIndex).runEventCode();
           } else {
+        	  goodEvents.get(stationaryIndex).unstopEvent();
+            stationaryIndex = 420;
+            eventFinished = true;
+          }
+      }
+  }
+  public void runRandomBadEvent () {
+      if (stationaryIndex == 420) {
+    	  try {
+              stationaryIndex = r.nextInt(badEvents.size() - 1);
+        	 } catch (IllegalArgumentException e) {
+        		 stationaryIndex = 0;
+        	 }
+          badEvents.get(stationaryIndex).runEventCode();
+      } else {
+          if (badEvents.get(stationaryIndex).isRunning()) {
+          badEvents.get(stationaryIndex).runEventCode();
+          } else {
+        	  badEvents.get(stationaryIndex).unstopEvent();
             stationaryIndex = 420;
             eventFinished = true;
           }

@@ -27,7 +27,11 @@ public class SoundPlayer implements LineListener{
 	 * @param volume the volume to play it at
 	 */
 	public void play (String songPath, float volume){
-		
+		try {
+		GameCode.clip.stop();
+		} catch (NullPointerException e) {
+			
+		}
 		soundFile = new File (songPath);
 		try {
 		AudioInputStream ais;

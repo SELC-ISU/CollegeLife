@@ -4,7 +4,7 @@ import main.GameCode;
 
 public class FartedInClass extends Event {
 	public FartedInClass(){
-	super(0);
+	super(3);
 	}
 	
 	public void runEventCode () {
