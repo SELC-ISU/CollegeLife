@@ -2,7 +2,7 @@ package events;
 
 
 public class Lost extends Event {
-	private boolean lost = false;
+	private boolean lost = true;
 	private int timesStaredAtPhone=0;
 	/** 
 	 * uses the original constructer

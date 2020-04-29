@@ -4,7 +4,7 @@ import main.GameCode;
 
 public class RickRoll extends Event {
 	public RickRoll (){
-		super(0);
+		super(3);
 	}
 	public void runEventCode () {
 		super.runEventCode();
@@ -14,7 +14,7 @@ public class RickRoll extends Event {
 		this.setSelected("lame");
 			}
 		if (this.checkSelected("CLICK IT BOI")) {
-			this.print("YOU GOT LEY EPIC TROLLED DUDE");
+			this.print("YOU GOT LE EPIC TROLLED DUDE");
 			this.print("");
 			this.print("GAIN STRESS");
 			GameCode.setStress(GameCode.getStress() + 10);

@@ -180,12 +180,19 @@ public class GameCode extends GameAPI {
     		textInterface.selected = "FEMALE";
     	}
     }
-    
+
+    if (textInterface.selected.equals("HECK YEAH MY DUDE")) {
+    	eventFinished = false;
+    	System.out.println(eventFinished);
+    	GameCode.textInterface.selected = "unimportant";
+    }
+
     if (gameStarted) {
     	if (!eventFinished) {
     		
 	    	if (eventCount == 0) {
 	    		requiredEvents.get(0).runEventCode();
+
 	    		if (!requiredEvents.get(0).isRunning()) {
 	    			eventCount = eventCount + 1;
 	    			GameCode.textInterface.selected = "unimportant";
@@ -202,16 +209,23 @@ public class GameCode extends GameAPI {
 	    		}
 	    	}
     	} else {
-    		
-    		GameCode.textInterface.selected = "unimportant";
-    		eventCount = eventCount + 1;
-    		eventFinished = false;
-    		decision = r.nextBoolean();
-    	}
+
+    		if (!textInterface.selected.equals("unimportant")) {
+	    		GameCode.textInterface.selected = "unimportant";
+	    		eventCount = eventCount + 1;
+	    		textInterface.println(" ");
+	    		textInterface.println("YOU READY TO MOVE ON");
+	    		textInterface.println(" ");
+	    		textInterface.query(new String [] {"HECK YEAH MY DUDE"});
+	    		decision = r.nextBoolean();
+    		}
     }
    
+    		
+    	}
+    }
 
-  }
+
   /**
    * returns the text interface
    * @return the text Interface
@@ -226,6 +240,9 @@ public class GameCode extends GameAPI {
     	 } catch (IllegalArgumentException e) {
     		 stationaryIndex = 0;
     	 }
+
+          stationaryIndex = r.nextInt(goodEvents.size());
+
           goodEvents.get(stationaryIndex).runEventCode();
       } else {
     	
@@ -240,11 +257,15 @@ public class GameCode extends GameAPI {
   }
   public void runRandomBadEvent () {
       if (stationaryIndex == 420) {
+
     	  try {
               stationaryIndex = r.nextInt(badEvents.size() - 1);
         	 } catch (IllegalArgumentException e) {
         		 stationaryIndex = 0;
         	 }
+
+              stationaryIndex = r.nextInt(badEvents.size());
+        	 
           badEvents.get(stationaryIndex).runEventCode();
       } else {
           if (badEvents.get(stationaryIndex).isRunning()) {
