@@ -44,7 +44,7 @@ public class Event {
 	 * resets the event so it can be used again
 	 */
 	public void unstopEvent () {
-		stopped = true;
+		stopped = false;
 		isRunning = false;
 	}
 	/**
