@@ -38,7 +38,7 @@ public class GameCode extends GameAPI {
   public Jessica jessica = new Jessica ();
   Random r = new Random();
   private static int health;
-  private int cash;
+  private static int cash;
   private static int stress;
   public  void initialize(){
 	if (firstRun) {
@@ -98,6 +98,13 @@ public class GameCode extends GameAPI {
   
   public static int getHealth () {
 	  return health;
+  }
+  public static void setCash (int newCash) {
+	  cash = newCash;
+  }
+  
+  public static int getCash () {
+	  return cash;
   }
   
   public void gameLoop() {
