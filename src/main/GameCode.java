@@ -68,28 +68,7 @@ public class GameCode extends GameAPI {
     textInterface = new TextInterface(80, 41, sprites.selector);
     textInterface.refreshPage();
     textInterface.println("CHOOSE YOUR GENDER:");
-    textInterface.query(new String[] { "MALE", "FEMALE", "RANDOM" });
-    /*textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    textInterface.println(" ");
-    */
-    
+    textInterface.query(new String[] { "MALE", "FEMALE", "RANDOM" });  
 }
   public static void setHealth (int newHealth) {
 	  health = newHealth;
@@ -199,6 +178,7 @@ public class GameCode extends GameAPI {
 	    		}
 	    	} else {
 	    		if (eventCount == 5) {
+	    			System.out.println(requiredEvents.size());
 	    			requiredEvents.get(1).runEventCode();
 	    		} else {
 	    			if (decision) {
