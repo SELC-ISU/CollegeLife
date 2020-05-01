@@ -19,11 +19,13 @@ public ClassSnacks (){
 				this.print("");
 				this.print("GAIN STRESS");
 				GameCode.setStress(GameCode.getStress() + 35);
+				this.print("");
 				this.setSelected("lame");
 				this.stopEvent();
 				}
 			if (this.checkSelected("FRUIT SNACKS")) {
 				this.print("THE CLASS THOUGH IT WAS OK.");
+				this.print("");
 				this.setSelected("lame");
 				this.stopEvent();
 			}
@@ -32,6 +34,7 @@ public ClassSnacks (){
 				this.print("");
 				this.print("LOSE STRESS");
 				GameCode.setStress(0);
+				this.print("");
 				this.setSelected("lame");
 				this.stopEvent();
 			}

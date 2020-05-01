@@ -13,7 +13,10 @@ import events.FartedInClass;
 import events.FirstClass;
 import events.FoodTime;
 import events.PopQuiz;
+import events.JustACold;
 import events.RickRoll;
+import events.ClassSnacks;
+import events.End;
 import resources.SoundPlayer;
 
 
@@ -42,6 +45,9 @@ public class GameCode extends GameAPI {
   public FoodTime time = new FoodTime();
   public FartedInClass d = new FartedInClass();
   FirstClass first = new FirstClass();
+  public JustACold flu = new JustACold();
+  public ClassSnacks snak = new ClassSnacks();
+  public End end = new End();
   Random r = new Random();
   private boolean decision = false;
   private static int health;
@@ -171,16 +177,33 @@ public class GameCode extends GameAPI {
     		
 	    	if (eventCount == 0) {
 	    		requiredEvents.get(0).runEventCode();
-
 	    		if (!requiredEvents.get(0).isRunning()) {
 	    			eventCount = eventCount + 1;
 	    			GameCode.textInterface.selected = "unimportant";
 	    		}
 	    	} else {
-	    		if (eventCount == 5) {
-	    			System.out.println(requiredEvents.size());
+	    		if (eventCount == 3) {
 	    			requiredEvents.get(1).runEventCode();
-	    		} else {
+	    			if (!requiredEvents.get(1).isRunning()) {
+		    			eventCount = eventCount + 1;
+		    			GameCode.textInterface.selected = "unimportant";
+		    		}
+	    		}
+	    		if (eventCount == 5) {
+	    			requiredEvents.get(2).runEventCode();
+	    			if (!requiredEvents.get(2).isRunning()) {
+		    			eventCount = eventCount + 1;
+		    			GameCode.textInterface.selected = "unimportant";
+		    		}
+	    		}
+	    		if (eventCount == 10) {
+		    		requiredEvents.get(3).runEventCode();
+
+		    		if (!requiredEvents.get(3).isRunning()) {
+		    			eventCount = eventCount + 1;
+		    			GameCode.textInterface.selected = "unimportant";
+		    		}}
+	    		else {
 	    			if (decision) {
 	    				this.runRandomGoodEvent();
 	    			} else {
