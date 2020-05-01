@@ -2,13 +2,13 @@ package events;
 
 
 public class FirstClass extends Event {
-	private boolean isLost = false;
-	Lost lost = new Lost();
+	Lost lost;
 	/** 
 	 * uses the original constructer
 	 */
-	public FirstClass () {
+	public FirstClass (int seed) {
 		super(1);
+		lost = new Lost(seed);
 	}
 	
 	 
@@ -22,18 +22,14 @@ public class FirstClass extends Event {
 	this.setSelected("lame");
 		}
 	if (this.checkSelected("choose to turn left".toUpperCase())) {
-		this.print("BRUH");
-		this.stopEvent();
 		}
 	if (this.checkSelected("continue on your path".toUpperCase())) {
-		this.print("BRUH");
+		this.print("BRUH");// continue event
 		this.stopEvent();
 		}
 	if (this.checkSelected("choose to turn right".toUpperCase())) {
-		this.print("BRUH");
-		this.stopEvent();
 		}
-	if(isLost){
+	if(lost.isLost()){
 		lost.runEventCode();
 		}
 	else if(!lost.isLost()){
