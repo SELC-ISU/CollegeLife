@@ -18,7 +18,7 @@ public class FartedInClass extends Event {
 			this.print("YOUR FART WAS HEARD DOWN THE HALL!");
 			this.print("");
 			this.print("GAIN STRESS");
-			GameCode.setStress(GameCode.getStress() + 10);
+			GameCode.setStress(GameCode.getStress() + 50);
 			this.setSelected("lame");
 			this.stopEvent();
 			}
