@@ -67,12 +67,14 @@ public class PopQuiz extends Event {
 			this.setSelected("unessasry");
 			this.questionAsked = false;
 			this.stopEvent();
+			GameCode.badEvents.remove(this);
 		} else {
 			this.print("you failed you needed " + Integer.toString(10 -(questionsCorrect - quesitonsWrong)) + " more correct answers to pass");
 			GameCode.setStress(GameCode.getStress() + (10 + ((questionsCorrect - quesitonsWrong) * 5 )));
 			this.questionAsked = false;
 			this.setSelected("unessasry");
 			this.stopEvent();
+			GameCode.badEvents.remove(this);
 		}
 		timer = 0;
 	}
