@@ -29,7 +29,7 @@ public class End extends Event{
 			this.print("THIS IS COLLEGE DUDE, YOUR MONEY IS GONE!");
 			this.print("");
 			this.print("WASTED MONEY");
-			GameCode.setCash(0);
+			GameCode.setCash(1);
 			this.setSelected("lame");
 			this.stopEvent();
 		}

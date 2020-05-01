@@ -24,7 +24,7 @@ public class PopQuiz extends Event {
 	if (this.checkSelected("unimportant")) {
 	this.print("You get a pop quiz in math there is no time to relax gotta hurry");
 	this.query(new String [] {"im ready", "oh no",});
-	this.changeMusic("resources/music/Doom-Theme.wav", 6F);
+	this.changeMusic("resources/music/Doom-Theme.wav", -10F);
 	this.setSelected("lame");
 		}
 	if (this.checkSelected("IM READY") || this.checkSelected("OH NO")) {
@@ -69,7 +69,7 @@ public class PopQuiz extends Event {
 			this.stopEvent();
 		} else {
 			this.print("you failed you needed " + Integer.toString(10 -(questionsCorrect - quesitonsWrong)) + " more correct answers to pass");
-			GameCode.setStress(GameCode.getStress() + (10 - ((questionsCorrect - quesitonsWrong) * 5 )));
+			GameCode.setStress(GameCode.getStress() + (10 + ((questionsCorrect - quesitonsWrong) * 5 )));
 			this.questionAsked = false;
 			this.setSelected("unessasry");
 			this.stopEvent();

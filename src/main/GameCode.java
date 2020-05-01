@@ -2,16 +2,20 @@ package main;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 
 import events.Template;
+import events.ClassSnacks;
+import events.Credits;
 import events.Event;
 import events.FartedInClass;
 import events.FirstClass;
 import events.FoodTime;
+import events.Jessica;
 import events.PopQuiz;
 import events.JustACold;
 import events.RickRoll;
@@ -32,22 +36,24 @@ public class GameCode extends GameAPI {
   private float volume;
   private boolean gameStarted = false;
   public static SoundPlayer player;
-  private int eventCount = 0;
+  private static int eventCount = 0;
   private Graphics graphics;
   int stationaryIndex = 420;
   boolean eventFinished = false;
   public static int waitUntil;
   private int gender;     //for the random
-  public String name;
+  public static String name;
   public Template bruh = new Template ();
   public RickRoll roll = new RickRoll ();
   public PopQuiz quiz = new PopQuiz ();
+  public Jessica jessica = new Jessica();
   public FoodTime time = new FoodTime();
   public FartedInClass d = new FartedInClass();
-  FirstClass first = new FirstClass();
+  public static FirstClass first = new FirstClass();
   public JustACold flu = new JustACold();
   public ClassSnacks snak = new ClassSnacks();
   public End end = new End();
+  public Credits credits = new Credits();
   Random r = new Random();
   private boolean decision = false;
   private static int health;
@@ -73,8 +79,16 @@ public class GameCode extends GameAPI {
 	stress = 0;
     textInterface = new TextInterface(80, 41, sprites.selector);
     textInterface.refreshPage();
+    File file = new File ("resources/phone.txt");
+    if (!file.exists()) {
     textInterface.println("CHOOSE YOUR GENDER:");
     textInterface.query(new String[] { "MALE", "FEMALE", "RANDOM" });  
+    } else {
+    textInterface.println("WELCOME TO THE PHONE ENDING");
+    player.play("resources/music/creepy-theme.wav", volume);
+    textInterface.println(" ");
+    textInterface.query(new String [] {"STARE AT THE PHONE"});
+    }
 }
   public static void setHealth (int newHealth) {
 	  health = newHealth;
@@ -100,6 +114,18 @@ public class GameCode extends GameAPI {
   public static int getStress () {
 	  return stress;
   }
+  public static String getName() {
+	  return name;
+  }
+  public static void setName (String newName) {
+	  name = newName;
+  }
+  public static void resetGame() {
+	  health = 100;
+	  cash = 100;
+	  stress = 0;
+	  eventCount = 0;
+  }
   public void gameLoop() {
     textInterface.frameEvent();
     // Test events like this
@@ -121,6 +147,33 @@ public class GameCode extends GameAPI {
     graphics.drawString("Stress", 475, 55);
     if (name != null) {
     	graphics.drawString(name, 545, 15);
+    }
+    if (stress >= 100 ) {
+    	textInterface.println("YOU COULDEN'T TAKE IT ANYMORE AND DROPED OUT");
+    	textInterface.println("GAME OVER");
+    	textInterface.query(new String [] {"DANG"});
+    	stress = 99;
+    }
+    if (health <= 0 ) {
+    	textInterface.println("YOU FREAKIN DIED");
+    	textInterface.println("GAME OVER");
+    	textInterface.query(new String [] {"DANG"});
+    	health = 1;
+    }
+    if (cash <= 0 ) {
+    	textInterface.println("YOU DONT HAVE ANY MONEY TRULLY THIS IS THE WORST POSIBLE ENDING");
+    	textInterface.println("GAME OVER");
+    	textInterface.query(new String [] {"DANG"});
+    	cash = 1;
+    }
+    if (textInterface.selected.equals("STARE AT THE PHONE")) {
+    	MainLoop.endGame();
+    }
+    if (textInterface.selected.equals("STARE AT THE PHONE")) {
+    	textInterface.println("ENJOY THE PHONE");
+    	textInterface.println(" ");
+    	textInterface.query(new String [] {"STARE AT THE PHONE"});
+    	textInterface.selected = "unimportant";
     }
     if (textInterface.selected.equals("MALE")) {
     	textInterface.refreshPage();
@@ -168,7 +221,6 @@ public class GameCode extends GameAPI {
 
     if (textInterface.selected.equals("HECK YEAH MY DUDE")) {
     	eventFinished = false;
-    	System.out.println(eventFinished);
     	GameCode.textInterface.selected = "unimportant";
     }
 
@@ -182,28 +234,34 @@ public class GameCode extends GameAPI {
 	    			GameCode.textInterface.selected = "unimportant";
 	    		}
 	    	} else {
+	    		if (eventCount == 3 || eventCount == 5 || eventCount == 10 || eventCount == 11) {
 	    		if (eventCount == 3) {
 	    			requiredEvents.get(1).runEventCode();
 	    			if (!requiredEvents.get(1).isRunning()) {
-		    			eventCount = eventCount + 1;
-		    			GameCode.textInterface.selected = "unimportant";
+		    			eventFinished = true;
+		    			
 		    		}
 	    		}
 	    		if (eventCount == 5) {
 	    			requiredEvents.get(2).runEventCode();
 	    			if (!requiredEvents.get(2).isRunning()) {
-		    			eventCount = eventCount + 1;
-		    			GameCode.textInterface.selected = "unimportant";
+	    				eventFinished = true;
+		    	
 		    		}
 	    		}
 	    		if (eventCount == 10) {
+	    			System.out.println("debug");
 		    		requiredEvents.get(3).runEventCode();
 
 		    		if (!requiredEvents.get(3).isRunning()) {
-		    			eventCount = eventCount + 1;
-		    			GameCode.textInterface.selected = "unimportant";
-		    		}}
-	    		else {
+		    			eventFinished = true;
+		   
+		    		}
+		    		}
+	    		if (eventCount == 11) {
+	    			requiredEvents.get(4).runEventCode();
+	    		}
+	    		}else {
 	    			if (decision) {
 	    				this.runRandomGoodEvent();
 	    			} else {
@@ -211,6 +269,7 @@ public class GameCode extends GameAPI {
 	    			}
 	    		}
 	    	}
+
     	} else {
 
     		if (!textInterface.selected.equals("unimportant")) {
@@ -222,11 +281,10 @@ public class GameCode extends GameAPI {
 	    		textInterface.query(new String [] {"HECK YEAH MY DUDE"});
 	    		decision = r.nextBoolean();
     		}
-    }
-   
-    		
     	}
     }
+    		
+  }
 
 
   /**

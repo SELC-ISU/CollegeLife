@@ -35,6 +35,11 @@ public ClassSnacks (){
 				this.print("LOSE STRESS");
 				GameCode.setStress(0);
 				this.print("");
+				GameCode.setStress(GameCode.getStress() - 35);
+				this.print("BUT IT WAS UNHEALTHY");
+				this.print("");
+				this.print("LOSE HEALTH");
+				GameCode.setHealth(GameCode.getHealth() - 35);
 				this.setSelected("lame");
 				this.stopEvent();
 			}

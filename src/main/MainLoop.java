@@ -9,10 +9,10 @@ public class MainLoop {
 	private static GameWindow gameWindow;
 	private static SpriteContainer sprites;
 	private static long delay; //Used for loop timing
+	static boolean running = true; //Currently unused, but setting this to false would stop the game
 	public static void main (String[] args) {
 		//Main method
 		double framerate = 30; //The framerate; pretty self-explanitory
-		boolean running = true; //Currently unused, but setting this to false would stop the game
 		long startTime; //Used for loop timing
 		delay = 0; //Used for loop timing
 		gameWindow = new GameWindow (); //Create the window
@@ -52,6 +52,10 @@ public class MainLoop {
 	}
 	public static GameWindow getWindow () {
 		return gameWindow;
+	}
+	public static void endGame() {
+		System.exit(0);
+		running = false;
 	}
 	public static SpriteContainer getSprites () {
 		return sprites;
